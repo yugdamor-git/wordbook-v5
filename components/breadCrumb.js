@@ -31,7 +31,7 @@ const BreadCrumb = () => {
 
     console.log(breadcrum_items)
 
-    return <div className="flex items-center text-gray-500 m-1 mt-3 p-1 text-xs">
+    return <div className="flex items-center text-gray-500 m-1 mt-3 p-1 text-sm">
         
         <div>
             <Link href="/">

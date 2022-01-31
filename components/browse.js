@@ -36,7 +36,7 @@ const Browse = ({ selected, page_type }) => {
         <div><h1 className="bg-primary-500 p-1 mt-4 text-white text-center rounded-t mb-1 font-semibold">Browse Dictionary</h1></div>
       <div className="grid grid-cols-6 md:grid-cols-10 lg:grid-cols-12 text-gray-400">
         {alphabets.map((alphabet) => (
-          <div>
+          <div key={alphabet}>
             <Link href={`/${page_type}/${alphabet.toLowerCase()}?page=1`}>
               <button
                 className={`${

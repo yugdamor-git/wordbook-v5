@@ -17,7 +17,7 @@ const TopWords = () => {
           {
               words.map(word => (
                   
-                  <WordButton word={word} href={`/en/hi/${word}`}/>
+                  <WordButton key={word} word={word} href={`/en/hi/${word}`}/>
                 
               ))
           }

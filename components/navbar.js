@@ -32,7 +32,7 @@ const Navbar = () => {
                         </div>
                         </Link>
 
-                        <Link href={"/browse"}>
+                        <Link href={"/browse/a"}>
                         <div className="p-2 mx-1 rounded hover:bg-primary-50 hover:text-indigo-500 cursor-pointer">
                             <button>Browse</button>
                         </div>
@@ -80,7 +80,7 @@ const Navbar = () => {
                             <div className="p-2 my-1 rounded hover:bg-primary-50 hover:text-indigo-500"><Link href="/en">All Words</Link></div>
                         </Menu.Item> 
                         <Menu.Item>
-                            <div className="p-2 my-1 rounded hover:bg-primary-50 hover:text-indigo-500"><Link href="/browse">Browse</Link></div>
+                            <div className="p-2 my-1 rounded hover:bg-primary-50 hover:text-indigo-500"><Link href="/browse/a">Browse</Link></div>
                         </Menu.Item>
                         <Menu.Item>
                             <div className="p-2 my-1 rounded hover:bg-primary-50 hover:text-indigo-500"><Link href="/top/150">Top 150</Link></div>

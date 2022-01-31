@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const WordButton = ({word,href}) => {
-  return <div>
+  return <div key={word}>
          <Link href={href}>
                   <div className="flex items-center mt-2 bg-gray-50 rounded mx-2 p-2 hover:bg-primary-50 hover:text-primary-500 hover:font-semibold">
                       {/* <div class="bg-primary-400 h-2 w-2 rounded-full mr-2"></div> */}

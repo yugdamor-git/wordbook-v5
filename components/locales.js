@@ -19,7 +19,7 @@ const Locales = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 text-gray-500">
         {
             languages.map(lang=>(
-                                <Link href={"/en/" + lang.code + "?page=1"}>
+                                <Link key={lang.code} href={"/en/" + lang.code + "?page=1"}>
                 <div className="bg-gray-50 m-4 p-4 rounded-xl text-center hover:text-primary-500 hover:bg-primary-50 hover:font-semibold shadow cursor-pointer">
                     <span>English To <span className="text-indigo-500">{lang.name}</span></span>
                 </div>

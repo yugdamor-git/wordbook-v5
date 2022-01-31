@@ -13,6 +13,7 @@ const Locales = () => {
         {name:"Malayalam",code:"ml"},
         {name:"Punjabi",code:"pa"},
         {name:"Urdu",code:"ur"}
+        
     ]
   return <div className="shadow rounded">
       <div className="text-center font-semibold text-white bg-primary-500 rounded-t p-1"><h1>Indian Language Dictionaries</h1></div>

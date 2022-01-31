@@ -52,7 +52,7 @@ const Navbar = () => {
                 </div>
 
                 <Menu.Button className="lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 stroke-primary-500" fill="none" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </Menu.Button>
@@ -72,8 +72,9 @@ const Navbar = () => {
             <Menu.Items>
                     <div  className="py-1 bg-white text-sm text-center pt-5 text-gray-500">
                         <Menu.Item>
-    
-                            <div className="bg-primary-500 text-white p-2 my-1 rounded"><Link href="/">Home</Link></div>
+                        <Link href="/">
+                            <div className="bg-primary-500 text-white p-2 my-1 rounded">Home</div>
+                        </Link>
                         </Menu.Item>
                         <Menu.Item>
                             <div className="p-2 my-1 rounded hover:bg-primary-50 hover:text-indigo-500"><Link href="/en">All Words</Link></div>

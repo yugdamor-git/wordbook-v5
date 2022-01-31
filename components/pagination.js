@@ -49,7 +49,7 @@ const Pagination = ({current_page,max_page}) => {
         <div className="flex items-center m-auto md:mr-0">
                 {
                 pages.map(item => (
-                    <button>
+                    <button key={item.name}>
                     <Link href={item.href}>
                         <div key={item.name} className={`h-8 w-8 m-2 text-center p-2 ${current_page==item.name ? "bg-primary-500 " : "bg-gray-100 hover:bg-primary-50 "}rounded`}>
                             

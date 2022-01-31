@@ -16,8 +16,10 @@ const TopWords = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-gray-500 text-sm">
           {
               words.map(word => (
+                  <div key={word}>
+                      <WordButton word={word} href={`/en/hi/${word}`}/>
+                  </div>
                   
-                  <WordButton key={word} word={word} href={`/en/hi/${word}`}/>
                 
               ))
           }

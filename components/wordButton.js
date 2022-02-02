@@ -4,7 +4,7 @@ import React from 'react';
 const WordButton = ({word,href}) => {
   return <div key={word}>
          <Link href={href}>
-                  <div className="flex items-center mt-2 bg-gray-50 rounded mx-2 p-2 hover:bg-primary-50 hover:text-primary-500 hover:font-semibold">
+                  <div className="flex items-center mt-2 bg-gray-50 rounded mx-2 p-2 hover:bg-primary-50 hover:text-primary-500 hover:font-semibold dark:bg-slate-900 dark:hover:bg-slate-800">
                       {/* <div class="bg-primary-400 h-2 w-2 rounded-full mr-2"></div> */}
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 fill-primary-500 pr-1" viewBox="0 0 19 19">
@@ -12,7 +12,7 @@ const WordButton = ({word,href}) => {
                             </svg>
                         </div>
                       <div>
-                        <span className="px-1">{word}</span>
+                        <span className="px-1 dark:text-slate-400">{word}</span>
                       </div>
                       
                   </div>

@@ -31,7 +31,7 @@ const BreadCrumb = () => {
 
     console.log(breadcrum_items)
 
-    return <div className="flex items-center text-gray-500 m-1 mt-3 p-1 text-sm">
+    return <div className="flex items-center text-gray-500 m-1 mt-3 p-1 text-sm dark:text-slate-400">
         
         <div>
             <Link href="/">
@@ -46,7 +46,7 @@ const BreadCrumb = () => {
                   <span className="mx-2">/</span>
                   <div>
                     <Link href={item.href}>
-                        <a className="hover:text-primary-500">{item.name}</a>
+                        <a className="hover:text-primary-500 dark:hover:text-primary-400">{item.name}</a>
                     </Link>
                     
                   </div>

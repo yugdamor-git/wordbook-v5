@@ -51,7 +51,7 @@ const Pagination = ({current_page,max_page}) => {
                 pages.map(item => (
                     <button key={item.name}>
                     <Link href={item.href}>
-                        <div key={item.name} className={`h-8 w-8 m-2 text-center p-2 ${current_page==item.name ? "bg-primary-500 " : "bg-gray-100 hover:bg-primary-50 "}rounded`}>
+                        <div key={item.name} className={`h-8 w-8 m-2 text-center p-2 ${current_page==item.name ? "bg-primary-500 " : "bg-gray-100 hover:bg-primary-50 dark:bg-slate-900 dark:text-slate-500 dark:hover:bg-slate-800 "}rounded`}>
                             
                                 <a  className={`${current_page == item.name ? "text-white " :""}`}>{item.name}</a>
                             

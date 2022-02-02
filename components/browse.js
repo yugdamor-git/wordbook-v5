@@ -32,9 +32,9 @@ const Browse = ({ selected, page_type }) => {
   ];
   console.log(`selected alphabet - ${selected}`);
   return (
-    <div className="shadow pb-4 rounded mb-2">
-        <div><h1 className="bg-primary-500 p-1 mt-4 text-white text-center rounded-t mb-1 font-semibold">Browse Dictionary</h1></div>
-      <div className="grid grid-cols-6 md:grid-cols-10 lg:grid-cols-12 text-gray-400">
+    <div className="shadow pb-4 rounded mb-2 dark:bg-black">
+        <div><h1 className="bg-primary-500 p-1 mt-4 text-white text-center rounded-t mb-1 font-semibold dark:text-slate-300">Browse Dictionary</h1></div>
+      <div className="grid grid-cols-6 md:grid-cols-10 lg:grid-cols-12 text-gray-500 p-2">
         {alphabets.map((alphabet) => (
           <div key={alphabet}>
             <Link href={`/${page_type}/${alphabet.toLowerCase()}?page=1`}>
@@ -43,7 +43,7 @@ const Browse = ({ selected, page_type }) => {
                   alphabet.toLowerCase() == selected
                     ? "text-primary-500 bg-primary-50 "
                     : ""
-                }h-10 w-10 bg-gray-50 hover:bg-primary-50 rounded hover:text-primary-500 font-semibold m-1`}
+                }h-10 w-10 bg-gray-50 hover:bg-primary-50 rounded hover:text-primary-500 m-1 dark:bg-gray-900 dark:text-slate-500 dark:hover:bg-gray-800`}
               >
                 {alphabet}
               </button>

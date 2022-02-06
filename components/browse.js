@@ -39,11 +39,7 @@ const Browse = ({ selected, page_type }) => {
           <div key={alphabet}>
             <Link href={`/${page_type}/${alphabet.toLowerCase()}?page=1`}>
               <button
-                className={`${
-                  alphabet.toLowerCase() == selected
-                    ? "text-primary-500 bg-primary-50 "
-                    : ""
-                }h-10 w-10 bg-gray-50 hover:bg-primary-50 rounded hover:text-primary-500 m-1 dark:bg-gray-900 dark:text-slate-500 dark:hover:bg-gray-800`}
+                className={`${ alphabet.toLowerCase() == selected ? "text-white bg-primary-500 ": "dark:bg-gray-900 dark:text-slate-500 "}h-10 w-10 shadow hover:bg-primary-500 rounded hover:text-white m-1 dark:hover:bg-primary-500`}
               >
                 {alphabet}
               </button>

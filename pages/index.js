@@ -9,7 +9,7 @@ import Popular from '../components/popular'
 import Search from '../components/search'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home({ data }) {
   const router = useRouter();
 
   let current_page = router.query.page;
@@ -27,9 +27,22 @@ export default function Home() {
       <div className="my-4"></div>
       <Popular/>
       <div className="my-4"></div>
-      <Locales/>
+      <Locales languages={data}/>
       <Browse page_type={`browse`} selected={"a"}/>
       </main>
     </div>
   )
 }
+
+
+export async function getServerSideProps(context) {
+  const resp = await fetch(`http://65.108.48.228:1337/api/i18n/locales`)
+  const data = await resp.json()
+  
+  return {
+    props: {data},
+  }
+}
+
+
+

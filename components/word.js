@@ -10,7 +10,7 @@ const WordDetails = ({ word }) => {
       <div className="">
         <div className="flex items-center justify-center">
           <div>
-            <h1 className="text-3xl font-bold text-primary-600">{word.word}</h1>
+            <h1 className="text-3xl font-bold text-primary-600">{word.word} - {word.phonetic}</h1>
           </div>
           <div className="px-4 pt-1">
             <svg
@@ -32,7 +32,7 @@ const WordDetails = ({ word }) => {
 
       <div className="my-2 shadow p-3 rounded text">
         <h1 className="font-semibold text-primary-500">Defination :</h1>
-        <p className="text-sm">{word.meaning}</p>
+        <p className="text-sm">{word.part_of_speech}</p>
       </div>
       <div className="my-2 shadow p-3 rounded">
         <h1 className="font-semibold text-primary-500">Origin :</h1>
@@ -41,17 +41,17 @@ const WordDetails = ({ word }) => {
 
       <div className="my-2 shadow p-3 rounded">
         <h1 className="font-semibold text-primary-500">Examples :</h1>
-        <p>{word.examples}</p>
+        <p>{word.createdAt}</p>
       </div>
 
       <div className="my-2 shadow p-3 rounded">
         <h1 className="font-semibold text-primary-500">Synonyms :</h1>
-        <p>{word.examples}</p>
+        <p>{word.publishedAt}</p>
       </div>
 
       <div className="my-2 shadow p-3 rounded">
         <h1 className="font-semibold text-primary-500">Antonyms :</h1>
-        <p>{word.examples}</p>
+        <p>{word.audio_url}</p>
       </div>
     </div>
   );

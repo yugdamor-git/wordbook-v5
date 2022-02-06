@@ -1,10 +1,29 @@
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+
+
 
 const Search = () => {
+
+    const router = useRouter()
+
+    const q = router.query.q
+
+    const [searchInput,setSearchInput] = useState(q)
+
+    
+    const handleInput = async (value) => {
+        setSearchInput(value)
+
+        router.push(`/search?q=${value}`)
+        
+    }
+    
+
   return <div className="rounded-3xl shadow m-2 hover:shadow-md bg-white dark:bg-gray-900">
-      <form >
+      <form action='/search'>
           <div className="flex items-center justify-between">
-            <input name="search" className="mx-1 p-1 outline-none text-primary-500 placeholder-gray-500 placeholder:text-xs pl-4 text-xs w-full dark:bg-slate-900 dark:placeholder:text-slate-500" placeholder='Search'></input>
+            <input autoFocus name="q" autocomplete="off" onChange={ e=> handleInput(e.target.value)} value={searchInput} className="mx-1 p-1 outline-none text-primary-500 placeholder-gray-500 placeholder:text-xs pl-4 text-xs w-full dark:bg-slate-900 dark:placeholder:text-slate-500" placeholder='Search'></input>
             <div className="mx-2 pt-2">
                 <button type='submit'>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 stroke-gray-500 hover:stroke-primary-500 dark:stroke-slate-500" fill="none" viewBox="0 0 28 28">
@@ -18,3 +37,6 @@ const Search = () => {
 };
 
 export default Search;
+
+
+

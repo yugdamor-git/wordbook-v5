@@ -2,7 +2,7 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  darkMode:"media",
+  darkMode:"class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -13,7 +13,7 @@ module.exports = {
         Montserrat:['Montserrat',"sans-serif"]
         },
       colors : {
-        primary : {...colors.indigo}
+        primary : {...colors.indigo},
       }
     },
   },

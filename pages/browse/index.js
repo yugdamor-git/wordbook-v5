@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 const BrowseHome = () => {
-    const router = useRouter()
+  const router = useRouter()
     
   return <div></div>;
 };

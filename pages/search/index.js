@@ -8,7 +8,7 @@ const SearchPage = ({ data }) => {
 
       {
           data.data.map(item=>(
-              <WordButton word={item.attributes.word} href={`/en/hi/${item.attributes.word}`}/>
+              <WordButton key={item.id} word={item.attributes.word} href={`/en/hi/${item.attributes.word}`}/>
           ))
       }
 

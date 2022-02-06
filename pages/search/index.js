@@ -5,9 +5,10 @@ import WordButton from '../../components/wordButton';
 const SearchPage = ({ data }) => {
   return <div>
       <Search/>
-
+        
       {
           data.data.map(item=>(
+              
               <WordButton key={item.id} word={item.attributes.word} href={`/en/hi/${item.attributes.word}`}/>
           ))
       }

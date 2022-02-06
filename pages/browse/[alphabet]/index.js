@@ -25,7 +25,7 @@ const Alphabet = ({ data }) => {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-gray-500 text-sm">
         {words.map((word) => (
-          <div key={word.attributes.word}>
+          <div key={word.id}>
              <WordButton word={word.attributes.word} href={`/en/hi/${word.attributes.word}`}/>
           </div>
         

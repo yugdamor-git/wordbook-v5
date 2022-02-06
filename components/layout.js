@@ -6,11 +6,22 @@ import Search from './search';
 
 const Layout = ({ children }) => {
 
+
+
+  function setDarkModeStorage(value)
+  {
+    setDarkMode(value)
+
+    
+  }
+
+  
+
   const [darkMode,setDarkMode] = useState(false)
 
   return <div className={`${darkMode ? "dark bg-black " : " "}font-Montserrat flex flex-col h-screen justify-between`}>
     <div className="dark:bg-black h-fit">
-      <Navbar darkMode={darkMode} enableDark={setDarkMode}/>
+      <Navbar darkMode={darkMode} enableDark={setDarkModeStorage}/>
       <main className="mx-2 md:mx-6 lg:mx-12 xl:mx-30 2xl:mx-60 dark:bg-black h-full">
           <BreadCrumb/>
           {children}

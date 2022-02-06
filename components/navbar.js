@@ -103,7 +103,7 @@ const Navbar = ({ darkMode , enableDark}) => {
                         current_route.split("/")[1] == item.href.split("/")[1]
                           ? "bg-primary-500 text-white "
                           : " "
-                      } p-2 mx-1 hover:bg-primary-50 rounded cursor-pointer hover:text-indigo-500`}
+                      } p-2 mx-1 hover:bg-primary-50 rounded cursor-pointer hover:text-indigo-500 dark:hover:bg-slate-800`}
                     >
                       {item.name}
                     </div>

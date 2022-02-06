@@ -23,7 +23,7 @@ const BreadCrumb = () => {
         bread_link = bread_link + item + "/"
 
         breadcrum_items.push({
-            "name":item,
+            "name":decodeURI(item),
             "href":bread_link
         })
         

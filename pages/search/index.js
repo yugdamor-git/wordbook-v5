@@ -1,10 +1,16 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 import Search from "../../components/search";
 import WordButton from '../../components/wordButton';
 
 const SearchPage = ({ data }) => {
   return <div>
-      <Search/>
+      <motion.div initial={{ y:140 }} animate={{ y:0 }} transition={{ duration:0.8}}>
+            <Search/>
+      </motion.div>
+            
+    
+      
         
       {
           data.data.map(item=>(

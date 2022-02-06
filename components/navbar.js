@@ -171,7 +171,7 @@ const Navbar = ({ darkMode , enableDark}) => {
                 <Link href={"/search?q="}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-7 w-7 stroke-gray-500 hover:stroke-primary-500 dark:stroke-slate-500"
+                    className="h-7 w-7 stroke-gray-500 hover:stroke-primary-500 dark:stroke-slate-500 dark:hover:stroke-primary-500"
                     fill="none"
                     viewBox="0 0 28 28"
                   >

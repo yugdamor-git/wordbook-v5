@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// current schema is more focused on speed rather than decouling...
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Word {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  word String
+  views BigInt @default(0)
+  likes BigInt @default(0)
+  origin String?
+  phonetic String?
+  audio_url String?
+  part_of_speech String?
+  definations Defination[]
+  localizations WordLocalizations[]
+  
+
+}
+
+model WordLocalizations {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  word String
+  locale String
+  origin String
+  audio_url String
+  part_of_speech String
+  w Word? @relation(fields: [w_id],references: [id])
+  w_id Int
+
+}
+
+
+model Defination {
+  id Int @id @default(autoincrement())
+  defination String
+  word Word? @relation(fields: [w_id],references: [id])
+  w_id Int?
+  examples Example[]
+  synonyms Synonym[]
+  antonyms Antonym[]
+  localizations DefinationsLocalizations[]
+
+}
+
+model DefinationsLocalizations {
+  id Int @id @default(autoincrement())
+  defination String
+  locale String
+  d Defination? @relation(fields: [d_id],references: [id])
+  d_id Int
+
+}
+
+
+model Example {
+  id Int @id @default(autoincrement())
+  example String
+  defination Defination? @relation(fields: [d_id],references: [id])
+  d_id Int
+  localizations ExampleLocalizations[]
+}
+
+model ExampleLocalizations {
+  id Int @id @default(autoincrement())
+  example String
+  locale String
+  e Example? @relation(fields: [e_id],references: [id])
+  e_id Int
+}
+
+
+model Synonym {
+   id Int @id @default(autoincrement())
+   synonym String
+   defination Defination? @relation(fields: [d_id],references: [id])
+   d_id Int
+   localizations SynonymLocalizations[]
+
+}
+
+model SynonymLocalizations {
+   id Int @id @default(autoincrement())
+   synonym String
+   locale String
+   s Synonym? @relation(fields: [s_id],references: [id])
+   s_id Int
+
+}
+
+
+
+model Antonym {
+   id Int @id @default(autoincrement())
+   antonym String
+   defination Defination? @relation(fields: [d_id],references: [id])
+   d_id Int
+   localizations AntonymLocalizations[]
+}
+
+model AntonymLocalizations {
+   id Int @id @default(autoincrement())
+   antonym String
+   locale String
+   a Antonym? @relation(fields: [a_id],references: [id])
+   a_id Int
+}
+
+

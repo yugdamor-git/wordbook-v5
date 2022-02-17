@@ -1,19 +1,24 @@
 import React from 'react';
 import Locales from '../../components/locales';
+import { connectToDatabase } from '../../lib/mongodb';
 
-const EnglishLocale = ({ data }) => {
+const EnglishLocale = ({ locales }) => {
+
+  const parsed_locales = JSON.parse(locales)
   return <div>
-      <Locales languages={data}></Locales>
+      <Locales languages={parsed_locales}></Locales>
   </div>;
 };
 
 
 export async function getServerSideProps(context) {
-  const resp = await fetch(`http://65.108.48.228:1337/api/i18n/locales`)
-  const data = await resp.json()
+  const { db } = await connectToDatabase();
+
+  const l = await db.collection("locales").find({}).toArray()
+  const locales = JSON.stringify(l)
   
   return {
-    props: {data},
+    props: {locales},
   }
 }
 

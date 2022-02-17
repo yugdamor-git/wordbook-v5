@@ -7,10 +7,14 @@ import Locales from '../components/locales'
 import Pagination from '../components/pagination'
 import Popular from '../components/popular'
 import Search from '../components/search'
+import { connectToDatabase } from '../lib/mongodb'
 import styles from '../styles/Home.module.css'
 
-export default function Home({ data }) {
+export default function Home({ locales,popular_words }) {
   const router = useRouter();
+  const locales_parsed = JSON.parse(locales)
+  const p_words_parsed = JSON.parse(popular_words)
+  
 
   let current_page = router.query.page;
   return (
@@ -25,10 +29,10 @@ export default function Home({ data }) {
       <div className="my-4"></div>
       <Search/>
       <div className="my-4"></div>
-      <Popular/>
+      <Popular words={p_words_parsed}/>
       <div className="my-4"></div>
-      <Locales languages={data}/>
-      <Browse page_type={`browse`} selected={"a"}/>
+      <Locales languages={locales_parsed}/>
+      <Browse page_type={`browse`} selected={null}/>
       </main>
     </div>
   )
@@ -36,11 +40,26 @@ export default function Home({ data }) {
 
 
 export async function getServerSideProps(context) {
-  const resp = await fetch(`http://65.108.48.228:1337/api/i18n/locales`)
-  const data = await resp.json()
+
+
+  const { db } = await connectToDatabase();
+
+  const l = await db.collection("locales").find({}).toArray()
+  const locales = JSON.stringify(l)
   
+  const popular_words = JSON.stringify(
+    await db
+      .collection(process.env.DATA_COLLECTION)
+      .find({})
+      .project({word: 1})
+      .sort({views:-1})
+      .limit(30)
+      .toArray()
+  );
+
+
   return {
-    props: {data},
+    props: {locales,popular_words},
   }
 }
 

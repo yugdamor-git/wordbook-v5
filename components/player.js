@@ -1,22 +1,42 @@
+import { route } from "next/dist/server/router";
+import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import useSound from "use-sound";
+import LocaleDropdown from "./localeDropdown";
 
-const Player = ({ url,word,phonetic }) => {
-
-    const [play] = useSound(url)
-
+const Player = ({ data }) => {
+  const [play] = useSound(data.audio_url);
+  const router = useRouter()
+  const target_locale = router.query.locale
   return (
-    <div>
-       <div className="flex items-center justify-center">
+    <div className="">
+      <div className="flex flex-col justify-around">
+        <div className="flex items-center">
           <div>
-            
-            <h1 className="text-3xl font-bold text-primary-600">{word} - {phonetic}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-primary-600">{data.localization[target_locale].word}</h1>
           </div>
-          <button onClick={play} className="px-4 pt-1">
+          <div className="pt-2 pl-1 text-gray-600 text-sm dark:text-gray-300">
+            <h1>{data.localization[target_locale].part_of_speech}</h1>
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center text-gray-400 dark:text-gray-600">
+          <div>
+            <h1 className="text-xl font-bold">{data.word}</h1>
+          </div>
+          <div className="pt-2 pl-1 text-sm">
+            <h1>{data.part_of_speech}</h1>
+          </div>
+        </div>
+      { data.phonetic != null &&
+      <div className="flex items-center justify-end">
+        <div className="flex items-center rounded-full shadow p-1 px-2 dark:bg-gray-900">
+          
+            <button onClick={play} className="px-2 pt-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-7 w-7 fill-gray-500 hover:fill-primary-500 dark:hover:fill-primary-500"
-              viewBox="0 0 20 20"
+              className="h-6 w-6 fill-gray-500 hover:fill-primary-500 dark:hover:fill-primary-500 dark:fill-gray-300"
+              viewBox="0 0 24 24"
             >
               <path
                 fillRule="evenodd"
@@ -26,7 +46,19 @@ const Player = ({ url,word,phonetic }) => {
             </svg>
           </button>
           
+          <div>
+            <h1 className="text-gray-500 dark:text-gray-300 text-sm">{data.phonetic}</h1>
+          </div>
         </div>
+        </div>
+}
+<div className="flex items-center justify-end">
+  <div>
+  <LocaleDropdown/>
+  </div>
+</div>
+
+      
     </div>
   );
 };

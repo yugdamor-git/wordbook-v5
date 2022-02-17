@@ -15,12 +15,12 @@ const Search = () => {
     const handleInput = async (value) => {
         setSearchInput(value)
 
-        router.push(`/search?q=${value}`)
+        router.push(`/search?q=${decodeURI(value).replace(" ","-")}`)
         
     }
     
 
-  return <div className="rounded-3xl shadow m-2 hover:shadow-md bg-white dark:bg-gray-900">
+  return <div className="rounded-3xl shadow hover:shadow-md bg-white dark:bg-gray-900">
       <form action='/search'>
           <div className="flex items-center justify-between">
             <input autoFocus name="q" autoComplete="off" onChange={ e=> handleInput(e.target.value)} value={searchInput} className="mx-1 p-1 outline-none text-primary-500 placeholder-gray-500 placeholder:text-xs pl-4 text-xs w-full dark:bg-slate-900 dark:placeholder:text-slate-500" placeholder='Search'></input>

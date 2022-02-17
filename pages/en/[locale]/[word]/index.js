@@ -1,30 +1,58 @@
+import { useRouter } from 'next/router';
 import React from 'react';
+import LocaleDropdown from '../../../../components/localeDropdown';
+import Suggestions from '../../../../components/suggestions';
 import WordDetails from '../../../../components/word';
+import { connectToDatabase } from '../../../../lib/mongodb';
 
 
 
-const Word = ({data}) => {
+const Word = ({data,suggestion_words}) => {
 
+  const router = useRouter()
 
+  const target_locale = router.query.locale;
+
+  const word = JSON.parse(data)
+
+  const w_suggestions = JSON.parse(suggestion_words)
  
-  return <div>
-   <WordDetails data={data} ></WordDetails>
+  return <div className="py-2">
+   <WordDetails data={word} ></WordDetails>
+   <Suggestions words={w_suggestions}/>
   </div>;
 };
 
 
 export async function getServerSideProps(context) {
-    const current_word = context.query.word
-    const current_locale = context.query.locale
-    const resp = await fetch(`http://65.108.48.228:1337/api/words?filters[word][$eq]=${current_word}&populate=*`)
-    const data = await resp.json()
+  const current_word = decodeURI(context.query.word).replaceAll("-", " ");
+  const target_locale = context.query.locale;
 
-    console.log("data")
-    console.log(data)
-    
-    return {
-      props: {data},
-    }
-  }
+  const { db } = await connectToDatabase();
+
+  const w = await db
+    .collection(process.env.DATA_COLLECTION)
+    .find({ word: current_word })
+    .toArray();
+
+  const data = JSON.stringify(w);
+  
+  db.collection(process.env.DATA_COLLECTION).updateOne(
+    { word: current_word },
+    { $inc: { views: 1 } }
+  );
+
+  const suggestion_words = JSON.stringify(
+    await db
+      .collection(process.env.DATA_COLLECTION)
+      .find({ word: { $regex: `^${current_word.slice(0, 3)}` } })
+      .project({ word: 1 })
+      .limit(20)
+      .toArray()
+  );
+  return {
+    props: { data, suggestion_words },
+  };
+}
 
 export default Word;

@@ -1,13 +1,14 @@
 import { useRouter } from "next/router";
 import React from "react";
-import Defination from "./defination";
-import LocaleDropdown from "./localeDropdown";
-import Player from "./player";
+import Antonyms from "./antonyms";
+import Example from "./example";
+import Synonyms from "./synonyms";
 
-const WordDetails = ({ data }) => {
-  const router = useRouter();
+const Defination = ({ d, index }) => {
+
+  const router = useRouter()
+
   const target_locale = router.query.locale
-  const word = data[0]
 
   const meta_localization = {
     "hi":{
@@ -75,44 +76,64 @@ const WordDetails = ({ data }) => {
     // }
     
   }
-
-
+  console.log(d.examples)
 
   return (
-    <div className="p-2 m-1">
-      <div className="flex justify-end items-center">
-        <div className="text-primary-500 text-xs mx-2">{word.views}</div>
-        <div>
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 fill-primary-500" viewBox="0 0 20 20">
-  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
-</svg>
+    <div className="px-4 mt-4 py-2 border-y-2 border-gray-300 dark:border-gray-600">
+      <div>
+        <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-2">
+        <h1 className="text-primary-500 font-semibold">
+          {index}. {d.localization[target_locale]}
+        </h1>
+        <h1 className="text-sm text-gray-400 dark:text-gray-500">
+          {index}. {d.defination}
+        </h1>
+        </div>
+        
+        <div className=" my-2 dark:border-gray-600">
+        {d.examples.length > 0 &&
+          <div>
+          <h1 className="mt-4 text-gray-600 dark:text-gray-300">{meta_localization[target_locale].examples}</h1>
+          <h1 className="text-gray-400 text-sm dark:text-gray-600">Examples</h1>
+          
+            <div className="px-4 mt-2">
+              {d.examples.map((e, e_index) => (
+                <Example key={e.example} example={e} e_index={e_index + 1} />
+              ))}
+            </div>
+            </div>
+          }
+
+          {d.antonyms.length > 0 &&
+            <div className=" my-2 py-2 dark:border-gray-600">
+            <h1 className="text-gray-600 dark:text-gray-300">{meta_localization[target_locale].antonyms}</h1>
+            <h1 className="text-gray-400 text-sm dark:text-gray-600">Antonyms</h1>
+            <div className="grid grid-cols-2 md:grid-cols-4 mt-2">
+              {d.antonyms.map((a_en, index) => (
+                <Antonyms key={a_en.antonym} antonym={a_en} a_index={index} />
+              ))}
+            </div>
+          </div>
+          }
+          
+
+          {d.synonyms.length > 0 &&
+            <div className=" my-2 py-2 dark:border-gray-600">
+            <h1 className="text-gray-600 dark:text-gray-300">{meta_localization[target_locale].synonyms}</h1>
+            <h1 className="text-gray-400 text-sm dark:text-gray-600">Synonyms</h1>
+            <div className="grid grid-cols-2 md:grid-cols-4 mt-2">
+              {d.synonyms.map((s_en, index) => (
+                <Synonyms key={s_en.synonym} synonym={s_en} a_index={index} />
+              ))}
+            </div>
+          </div>
+          }
+
+
         </div>
       </div>
-      <div className="">
-        <Player data={word}/>
-      </div>
-
-      {
-        word.definations.length > 0 &&
-
-        <div className="mt-8">
-      <h1 className="text-gray-600 dark:text-gray-300">{meta_localization[target_locale].definations}</h1>
-      <h1 className="text-gray-600 text-sm">Definitions</h1>
-
-      {
-        word.definations.map((d,index) => (
-          <Defination key={index} d={d} index={index + 1}  />
-        ))
-      }
-
-      </div>
- 
-    
-      }
-      </div>
-      
+    </div>
   );
 };
 
-export default WordDetails;
+export default Defination;

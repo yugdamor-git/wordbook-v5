@@ -1,30 +1,57 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React from 'react';
-import WordButton from '../../../components/wordButton';
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
+import Pagination from "../../../components/pagination";
+import WordButton from "../../../components/wordButton";
+import { connectToDatabase } from "../../../lib/mongodb"
 
-const TopWords = () => {
-    const router = useRouter()
+const TopWords = ({ top_words }) => {
+  const router = useRouter();
+  // const pagination = top_words.meta.pagination;
+  const words = JSON.parse(top_words);
 
-    const words = "To control the text color of an input placeholder at a specific breakpoint, add a {screen}: prefix to any existing text color utility. For example, use md:placeholder-green-500 to apply the placeholder-green-500 utility at only medium screen sizes and above.".split(" ")
+  console.log(words);
 
-    const count = router.query.count 
+  const count = router.query.count;
 
-    console.log(router.query.count)
-  return <div>
-      <div className="text-center my-2 font-semibold text-primary-500"><h1>Top {count} Words</h1></div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-gray-500 text-sm">
-          {
-              words.map(word => (
-                  <div key={word}>
-                      <WordButton word={word} href={`/en/hi/${word}`}/>
-                  </div>
-                  
-                
-              ))
-          }
+  return (
+    <div>
+      <div className="text-center my-2 font-semibold text-primary-500">
+        <h1>Top {count} Words</h1>
       </div>
-  </div>;
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-gray-500 text-sm">
+        {words.map((word) => (
+          <div key={word.id}>
+            <WordButton word={word.word} href={`/en/hi/${word.word}`} />
+          </div>
+        ))}
+      </div>
+      {/* <Pagination
+        current_page={+pagination.page}
+        max_page={pagination.pageCount}
+      /> */}
+    </div>
+  );
 };
+
+export async function getServerSideProps(context) {
+
+  const { db } = await connectToDatabase();
+
+
+  const count = +context.query.count;
+  const top_words = JSON.stringify(
+    await db.collection(process.env.DATA_COLLECTION)
+    .find({})
+    .project({word: 1})
+    .sort({likes:-1,views:-1})
+    .limit(count)
+    .toArray()
+  );
+
+  return {
+    props: { top_words },
+  };
+}
 
 export default TopWords;

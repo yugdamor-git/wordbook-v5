@@ -25,11 +25,15 @@ let navbar_items = [
 
 const Navbar = ({ darkMode , enableDark}) => {
   const router = useRouter();
-
+  let searchbar_active = true
   let current_route = router.asPath
   if (current_route == "/")
   {
-
+    searchbar_active = false
+  }
+  else if (current_route.startsWith("/search?q="))
+  {
+    searchbar_active = false
   }
   
   function enableDarkMode()
@@ -38,7 +42,7 @@ const Navbar = ({ darkMode , enableDark}) => {
   }
 
   return (
-    <div className="shadow px-4 py-4 lg:py-1 sticky top-0 z-50 bg-white dark:bg-black dark:shadow dark:shadow-slate-900">
+    <div className="shadow px-4 py-4 lg:py-2 sticky top-0 z-50 bg-white dark:bg-black dark:shadow dark:shadow-slate-900">
       <nav>
         <Menu>
           <div className="flex items-center justify-between">
@@ -62,16 +66,21 @@ const Navbar = ({ darkMode , enableDark}) => {
                 Word Book
               </div>
             </div>
-
-            <div className="hidden lg:block">
-              <Search />
-            </div>
+            { searchbar_active &&
+                    <div className="hidden lg:block">
+                    <Search />
+                  </div>
+            }
+            
+            
             <div className="hidden lg:block">
               <div className="flex justify-items-center text-gray-500 text-xs">
 
               <div className="mr-3 pt-1">
                 <button onClick={enableDarkMode}>
                   {darkMode && (
+                      
+                    
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6 fill-slate-500 hover:fill-slate-300"
@@ -83,6 +92,7 @@ const Navbar = ({ darkMode , enableDark}) => {
                         clipRule="evenodd"
                       />
                     </svg>
+
                   )}
 
                   {!darkMode && (

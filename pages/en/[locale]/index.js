@@ -50,8 +50,31 @@ export async function getServerSideProps(context) {
   
     let current_locale = context.query.locale
     const { db } = await connectToDatabase();
-    const words = JSON.stringify(
-      await db
+  //   const words = JSON.stringify(
+  //     await db
+  //       .collection(process.env.DATA_COLLECTION)
+  //       .find({
+  //         id:{
+  //           $gt:skip,
+  //           $lt:skip + size
+  //         }
+  //       })
+  //       .project({word: 1})
+  //       .toArray()
+  //   );
+
+  // const total_docs = parseInt(
+  //   await db
+  //     .collection(process.env.DATA_COLLECTION)
+  //     .count({})
+  // );
+
+  const [total_docs_p,words_p] = await Promise.all(
+    [
+      db
+      .collection(process.env.DATA_COLLECTION)
+      .count({}),
+      db
         .collection(process.env.DATA_COLLECTION)
         .find({
           id:{
@@ -60,14 +83,13 @@ export async function getServerSideProps(context) {
           }
         })
         .project({word: 1})
-        .toArray()
-    );
+        .toArray(),
+      
+    ]
+  )
 
-  const total_docs = parseInt(
-    await db
-      .collection(process.env.DATA_COLLECTION)
-      .count({})
-  );
+  const words = JSON.stringify(words_p)
+  const total_docs = parseInt(total_docs_p)
 
   const total_pages = Math.ceil(total_docs / size);
 

@@ -25,6 +25,7 @@ const Word = ({data,suggestion_words}) => {
 
 
 export async function getServerSideProps(context) {
+  
   const current_word = decodeURI(context.query.word).replaceAll("-", " ");
   const target_locale = context.query.locale;
 
@@ -36,7 +37,7 @@ export async function getServerSideProps(context) {
     .toArray();
 
   const data = JSON.stringify(w);
-  
+
   db.collection(process.env.DATA_COLLECTION).updateOne(
     { word: current_word },
     { $inc: { views: 1 } }

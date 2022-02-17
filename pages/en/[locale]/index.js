@@ -55,9 +55,8 @@ export async function getServerSideProps(context) {
         .collection(process.env.DATA_COLLECTION)
         .find({})
         .project({word: 1})
-        .sort({_id:1})
-        .limit(size)
         .skip(skip)
+        .limit(size)
         .toArray()
     );
 

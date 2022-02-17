@@ -19,17 +19,16 @@ const BreadCrumb = () => {
         {
             item = item.split("?")[0]
         }
-        const p_item = decodeURI(item)
-        bread_link = bread_link + p_item.toString().replaceAll(" ","-") + "/"
+
+        bread_link = bread_link + decodeURI(item).replaceAll(" ","-") + "/"
 
         breadcrum_items.push({
-            "name":p_item,
+            "name":decodeURI(item),
             "href":bread_link
         })
         
     }
 
-    console.log(breadcrum_items)
 
     return <div className="flex items-center text-gray-500 m-1 mt-3 p-1 text-sm dark:text-slate-400">
         

@@ -20,7 +20,7 @@ const BreadCrumb = () => {
             item = item.split("?")[0]
         }
 
-        bread_link = bread_link + decodeURI(item).replaceAll(" ","-") + "/"
+        bread_link += decodeURI(item) + "/"
 
         breadcrum_items.push({
             "name":decodeURI(item),

@@ -25,8 +25,7 @@ const Word = ({data,suggestion_words}) => {
 
 
 export async function getServerSideProps(context) {
-
-  const current_word = context.query.word.replaceAll("-", " ");
+  const current_word = decodeURI(context.query.word).replaceAll("-", " ");
   const target_locale = context.query.locale;
 
   const { db } = await connectToDatabase();

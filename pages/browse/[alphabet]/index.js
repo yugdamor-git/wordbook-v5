@@ -38,7 +38,7 @@ const Alphabet = ({ data }) => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-gray-500 text-sm">
         {words.map((word) => (
           <div key={word._id}>
-            <WordButton word={word.word} href={`/en/hi/${word.word.replaceAll(" ","-")}`} />
+            <WordButton word={word.word} href={`/en/hi/${word.word.toString().replaceAll(" ","-")}`} />
           </div>
         ))}
       </div>

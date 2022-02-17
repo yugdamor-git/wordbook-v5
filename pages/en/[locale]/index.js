@@ -73,13 +73,13 @@ export async function getServerSideProps(context) {
     [
       db
       .collection(process.env.DATA_COLLECTION)
-      .count({}),
+      .count(),
       db
         .collection(process.env.DATA_COLLECTION)
         .find({
           id:{
             $gt:skip,
-            $lt:skip + size
+            $lte:skip + size
           }
         })
         .project({word: 1})

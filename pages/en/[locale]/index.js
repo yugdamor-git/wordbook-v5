@@ -53,10 +53,13 @@ export async function getServerSideProps(context) {
     const words = JSON.stringify(
       await db
         .collection(process.env.DATA_COLLECTION)
-        .find({})
+        .find({
+          id:{
+            $gt:skip,
+            $lt:skip + size
+          }
+        })
         .project({word: 1})
-        .skip(skip)
-        .limit(size)
         .toArray()
     );
 

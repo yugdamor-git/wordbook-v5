@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import BreadCrumb from '../components/breadCrumb'
 import Browse from '../components/browse'
 import Hero from '../components/hero'
 import Locales from '../components/locales'
@@ -17,6 +18,13 @@ export default function Home({ locales,popular_words }) {
   
 
   let current_page = router.query.page;
+
+  const breadcrum_items = [
+    {
+      name:"Home",
+      href:"/"
+    }
+  ]
   return (
     <div>
       <Head>
@@ -25,13 +33,15 @@ export default function Home({ locales,popular_words }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+      <BreadCrumb breadcrum_items={breadcrum_items}/>
       <Hero/>
       <div className="my-4"></div>
       <Search/>
       <div className="my-4"></div>
-      <Popular words={p_words_parsed}/>
-      <div className="my-4"></div>
       <Locales languages={locales_parsed}/>
+      <div className="my-4"></div>
+      <Popular words={p_words_parsed}/>
+      
       <Browse page_type={`browse`} selected={null}/>
       </main>
     </div>
@@ -39,7 +49,7 @@ export default function Home({ locales,popular_words }) {
 }
 
 
-export async function getServerSideProps(context) {
+export async function getStaticProps() {
 
 
   const { db } = await connectToDatabase();
@@ -59,7 +69,7 @@ export async function getServerSideProps(context) {
 
 
   return {
-    props: {locales,popular_words},
+    props: {locales,popular_words},revalidate: 10,
   }
 }
 

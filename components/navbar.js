@@ -15,7 +15,7 @@ let navbar_items = [
   },
   {
     name: "Browse",
-    href: "/browse",
+    href: "/browse/a/page/1",
   },
   {
     name: "Top 200",
@@ -25,6 +25,7 @@ let navbar_items = [
 
 const Navbar = ({ darkMode , enableDark}) => {
   const router = useRouter();
+  const current_locale = router.query.locale
   let searchbar_active = true
   let current_route = router.asPath
   if (current_route == "/")
@@ -62,9 +63,12 @@ const Navbar = ({ darkMode , enableDark}) => {
                   />
                 </svg>
               </div>
-              <div className="mx-2 font-bold text-primary-600 dark:text-primary-500">
-                Word Book
-              </div>
+              <Link href="/">
+                <div className="mx-2 font-bold text-primary-600 dark:text-primary-500">
+                  Word Book
+                </div>
+              </Link>
+              
             </div>
             { searchbar_active &&
                     <div className="hidden lg:block">
@@ -107,7 +111,7 @@ const Navbar = ({ darkMode , enableDark}) => {
                 </button>
               </div>
                 {navbar_items.map((item) => (
-                  <Link key={item.name} href={item.href}>
+                  <Link key={item.name} href={item.href} passHref>
                     <div
                       className={`${
                         current_route.split("/")[1] == item.href.split("/")[1]
@@ -119,34 +123,7 @@ const Navbar = ({ darkMode , enableDark}) => {
                     </div>
                   </Link>
                 ))}
-                {/* <Link href={"/"}>
-                  <div className="bg-primary-500 text-white p-2 mx-1 rounded cursor-pointer">
-                    Home
-                  </div>
-                </Link>
-
-                <Link href={"/en"}>
-                  <div className="p-2 mx-1 rounded hover:bg-primary-50 hover:text-indigo-500 cursor-pointer dark:hover:bg-gray-800">
-                    <button>All Words</button>
-                  </div>
-                </Link>
-
-                <Link href={"/browse/a"}>
-                  <div className="p-2 mx-1 rounded hover:bg-primary-50 hover:text-indigo-500 cursor-pointer dark:hover:bg-gray-800">
-                    <button>Browse</button>
-                  </div>
-                </Link>
-
-                <Link href={"/top/150"}>
-                  <div className="p-2 mx-1 rounded hover:bg-primary-50 hover:text-indigo-500 cursor-pointer dark:hover:bg-gray-800">
-                    <button>Top 150</button>
-                  </div>
-                </Link>
-                <Link href={"/top/200"}>
-                  <div className="p-2 mx-1 rounded hover:bg-primary-50 hover:text-indigo-500 cursor-pointer dark:hover:bg-gray-800">
-                    <button>Top 200</button>
-                  </div>
-                </Link> */}
+               
               </div>
             </div>
             <div className="lg:hidden flex items-center">
@@ -178,7 +155,7 @@ const Navbar = ({ darkMode , enableDark}) => {
                 </button>
               </div>
               <div className="mx-2">
-                <Link href={"/search?q="}>
+                <Link href={`/search/${current_locale != null ? current_locale : "hi"}?q=`}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-7 w-7 stroke-gray-500 hover:stroke-primary-500 dark:stroke-slate-500 dark:hover:stroke-primary-500"
@@ -223,21 +200,22 @@ const Navbar = ({ darkMode , enableDark}) => {
             leaveTo="transform opacity-0 scale-90"
           >
             <Menu.Items>
-              <div className="py-1 bg-white text-sm text-center pt-5 text-gray-500 dark:bg-black">
+              <div className="py-1 grid grid-cols-1 bg-white text-sm text-center pt-5 text-gray-500 dark:bg-black">
                 {navbar_items.map((item) => (
-                  <Menu.Item key={item.name}>
-                    <Link href={item.href}>
-                      <div
-                        className={`${
-                          current_route.split("/")[1] == item.href.split("/")[1]
-                            ? "bg-primary-500 text-white"
-                            : "bg-gray-50 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800"
-                        } p-2 my-1 rounded`}
-                      >
+                   <Link href={item.href} key={item.name} passHref>
+                  <Menu.Item as="button" className={`${
+                    current_route.split("/")[1] == item.href.split("/")[1]
+                      ? "bg-primary-500 text-white"
+                      : "bg-gray-50 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800"
+                  } rounded p-1 m-1`} key={item.name}>
+                   
+                        <span>
                         {item.name}
-                      </div>
-                    </Link>
+                        </span>
+                        
+                   
                   </Menu.Item>
+                  </Link>
                 ))}
 
                 {/* <Menu.Item>

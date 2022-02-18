@@ -3,11 +3,12 @@ import { NextResponse } from 'next/server'
 
 export function middleware(request) {
   const url = request.nextUrl.clone()
-  if (url.pathname == '/browse') {
-    url.pathname = '/browse/a'
+  if (url.pathname == '/browse' || url.pathname == '/browse/a') {
+    url.pathname = '/browse/a/page/1'
   }
   else if (url.pathname == '/top') {
       url.pathname = '/top/200'
   }
+  
   return NextResponse.rewrite(url)
 }

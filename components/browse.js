@@ -37,7 +37,7 @@ const Browse = ({ selected, page_type }) => {
       <div className="grid grid-cols-6 md:grid-cols-10 lg:grid-cols-12 text-gray-500 p-2">
         {alphabets.map((alphabet) => (
           <div key={alphabet}>
-            <Link href={`/${page_type}/${alphabet.toLowerCase()}?page=1`}>
+            <Link href={`/${page_type}/${alphabet.toLowerCase()}/page/1`}>
               <button
                 className={`${ alphabet.toLowerCase() == selected ? "text-white bg-primary-500 ": "dark:bg-gray-900 dark:text-slate-500 "}h-10 w-10 shadow hover:bg-primary-500 rounded hover:text-white m-1 dark:hover:bg-primary-500 dark:hover:text-white`}
               >

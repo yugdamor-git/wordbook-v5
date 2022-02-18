@@ -9,13 +9,15 @@ const Search = () => {
 
     const q = router.query.q
 
+    const current_locale = router.query.locale
+
     const [searchInput,setSearchInput] = useState(q)
 
     
     const handleInput = async (value) => {
         setSearchInput(value)
 
-        router.push(`/search?q=${decodeURI(value).replace(" ","-")}`)
+        router.push(`/search/${current_locale}?q=${decodeURI(value).replace(" ","-")}`)
         
     }
     

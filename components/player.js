@@ -52,11 +52,10 @@ const Player = ({ data }) => {
         </div>
         </div>
 }
-<div className="flex items-center justify-end">
+
   <div>
   <LocaleDropdown/>
   </div>
-</div>
 
       
     </div>

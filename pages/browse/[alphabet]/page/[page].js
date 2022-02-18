@@ -1,22 +1,71 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import React from "react";
-import Browse from "../../../components/browse";
-import Pagination from "../../../components/pagination";
-import WordButton from "../../../components/wordButton";
-import { connectToDatabase } from "../../../lib/mongodb";
+import BreadCrumb from "../../../../components/breadCrumb";
+import Browse from "../../../../components/browse";
+import Pagination from "../../../../components/pagination";
+import WordButton from "../../../../components/wordButton";
+import { connectToDatabase } from "../../../../lib/mongodb";
+
+const alphabets = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
 
 const Alphabet = ({ data }) => {
   const words = JSON.parse(data.words);
   const pagination = data.pagination;
 
-  console.log(words);
-
   const router = useRouter();
 
   const current_alphabet = router.query.alphabet;
 
+  const breadcrum_items = [
+    {
+      name:"Home",
+      href:"/"
+    },
+    {
+      name:"Browse",
+      href:"/browse/a/page/1"
+    },
+    {
+      name:current_alphabet,
+      href:`/browse/${current_alphabet}/page/1`
+    },
+    {
+      name:pagination.page,
+      href:`/browse/${current_alphabet}/page/${pagination.page}`
+    }
+  ]
+
   return (
+    <div>
+      <BreadCrumb breadcrum_items={breadcrum_items}/>
     <motion.div
       initial={{ y: 120 }}
       animate={{ y: 0 }}
@@ -46,18 +95,21 @@ const Alphabet = ({ data }) => {
         <Pagination
           current_page={+pagination.page}
           max_page={pagination.pageCount}
+          pageType="alphabet"
         ></Pagination>
       </div>
     </motion.div>
+    </div>
   );
 };
 
 export default Alphabet;
 
-export async function getServerSideProps(context) {
-  const current_alphabet = context.query.alphabet;
+export async function getStaticProps({ params }) {
 
-  let current_page = context.query.page;
+  const current_alphabet = params.alphabet;
+
+  let current_page = params.page;
 
   const size = 20;
 
@@ -66,13 +118,6 @@ export async function getServerSideProps(context) {
   }
 
   const skip = (current_page - 1) * size;
-
-  // const resp = await fetch(`http://65.108.48.228:1337/api/words?filters[word][$startsWith]=${current_alphabet}&pagination[page]=${current_page}`)
-  // const data = await resp.json()
-
-  // return {
-  //   props: {data},
-  // }
 
   const { db } = await connectToDatabase();
 
@@ -102,6 +147,24 @@ export async function getServerSideProps(context) {
   };
 
   return {
-    props: { data: { words: words, pagination: pagination } },
+    props: { data: { words: words, pagination: pagination } },revalidate: 60,
   };
 }
+
+export async function getStaticPaths() {
+  let paths = []
+  alphabets.map(char => (
+    paths.push({
+      params:{
+        alphabet:char.toLocaleLowerCase(),
+        page:"1"
+      }
+    })
+  ))
+  
+  
+  return { paths, fallback: 'blocking' }
+  
+  }
+  
+

@@ -22,9 +22,29 @@ const Layout = ({ children }) => {
 
   return <div className={`${darkMode ? "dark bg-black " : " "}font-Montserrat flex flex-col h-screen justify-between`}>
      <NextSeo
-      title="wordbook"
+      title="WordBook"
       description="The easy to understand dictionary with Example Sentences , Famous Quotes and Audio Pronunciations"
+      canonical="https://uptoword.com/"
+      openGraph={{
+        url: 'https://uptoword.com/',
+        title: 'Word Book',
+        description: 'The easy to understand dictionary with Example Sentences , Famous Quotes and Audio Pronunciations',
+        images: [
+          {
+            url: 'https://uptoword.com/images/wordbook.png',
+            width: 320,
+            height: 220,
+            alt: 'Home Image',
+            type: 'image/jpeg',
+          },
+        ],
+        site_name: 'uptoword',
+      }}
+      twitter={{
+        cardType: 'The easy to understand dictionary with Example Sentences , Famous Quotes and Audio Pronunciations',
+      }}
     />
+    
     <div className="dark:bg-black h-fit">
       <Navbar darkMode={darkMode} enableDark={setDarkModeStorage}/>
       <main className="mx-2 md:mx-6 lg:mx-12 xl:mx-30 2xl:mx-60 dark:bg-black h-full">

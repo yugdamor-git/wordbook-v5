@@ -9,7 +9,12 @@ const Search = () => {
 
     const q = router.query.q
 
-    const current_locale = router.query.locale
+    let current_locale = router.query.locale
+
+    if (current_locale == null)
+    {
+        current_locale = "hi"
+    }
 
     const [searchInput,setSearchInput] = useState(q)
 

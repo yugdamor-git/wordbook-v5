@@ -12,6 +12,11 @@ const SearchPage = ({ data }) => {
   const router = useRouter()
   const current_locale = router.query.locale
 
+  if (current_locale == null)
+  {
+    current_locale ="hi"
+  }
+
   const breadcrum_items = [
     {
       name:"Home",
@@ -41,7 +46,7 @@ const SearchPage = ({ data }) => {
       {words.map((item) => (
         <WordButton
           key={item.id}
-          word={item.localization[current_locale].word}
+          word={item.word + " : " + item.localization[current_locale].word}
           href={`/en/${current_locale}/${item.word.replaceAll(" ","-")}`}
         />
       ))}
@@ -66,7 +71,7 @@ export async function getServerSideProps(context) {
   const data = JSON.stringify(
     await db
       .collection(process.env.DATA_COLLECTION)
-      .find(main_query)
+      .find({word:{ $regex: `^${q}` }})
       .project(project)
       .limit(20)
       .toArray()

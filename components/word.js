@@ -1,3 +1,4 @@
+import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
@@ -91,6 +92,30 @@ const WordDetails = ({ data }) => {
 
   return (
     <div className="p-2 m-1">
+
+      <NextSeo
+      title={`${word.word} meaning and definition `}
+      description={`Know the real meaning of ${word.word} with simple examples and definitions.`}
+      canonical="https://uptoword.com/"
+      openGraph={{
+        url: 'https://uptoword.com/',
+        title: 'Word Book',
+        description: 'The easy to understand dictionary with Example Sentences , Famous Quotes and Audio Pronunciations',
+        images: [
+          {
+            url: `https://api.inasentence.me/image_generator_testing?text=${word.word}`,
+            width: 320,
+            height: 220,
+            alt: 'Home Image',
+            type: 'image/jpeg',
+          },
+        ],
+        site_name: 'uptoword',
+      }}
+      twitter={{
+        cardType: 'The easy to understand dictionary with Example Sentences , Famous Quotes and Audio Pronunciations',
+      }}
+    />
       <div>
         <p className="text-gray-500 font-semibold text-sm md:text-xl">
           <span>{meta_localization[target_locale].heading.split("$$$")[0]}</span>

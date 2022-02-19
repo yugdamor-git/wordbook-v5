@@ -75,7 +75,7 @@ const LocaleDropdown = () => {
     <div>
       <Menu>
         <Menu.Button className="bg-primary-500 rounded p-2 text-white text-xs">Change Language</Menu.Button>
-        <Menu.Items className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-10 space-x-2 space-y-2">
+        <Menu.Items className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-10 space-x-2 space-y-2">
         {locales.map(
         (locale) =>
           locale.default == false &&

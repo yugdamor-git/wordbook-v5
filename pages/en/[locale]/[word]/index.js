@@ -39,7 +39,7 @@ const Word = ({data,suggestion_words}) => {
   ]
 
   return <div className="py-2">
-    <BreadCrumb breadcrum_items={breadcrum_items}/>
+    
    <WordDetails data={word} ></WordDetails>
    <Suggestions words={w_suggestions}/>
   </div>;

@@ -75,14 +75,14 @@ const LocaleDropdown = () => {
     <div>
       <Menu>
         <Menu.Button className="bg-primary-500 rounded p-2 text-white text-xs">Change Language</Menu.Button>
-        <Menu.Items className="grid grid-cols-3 space-x-1">
+        <Menu.Items className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-10 space-x-2 space-y-2">
         {locales.map(
         (locale) =>
           locale.default == false &&
           <Link
           href={`/en/${locale.code}/${current_word.replace(" ", "-")}`}
         >
-          <Menu.Item as="div" className={`${locale.code == current_locale ? "bg-primary-50 text-primary-500 ":"bg-gray-50 "} transition ease-in-out delay-150 flex items-center mt-2 rounded hover:bg-primary-500 hover:text-white dark:bg-slate-900 dark:hover:bg-slate-800`}>
+          <Menu.Item as="div" className={`${locale.code == current_locale ? "bg-primary-50 text-primary-500 ":"bg-gray-50 "} transition ease-in-out delay-150 flex items-center mt-2 ml-2 rounded hover:bg-primary-500 hover:text-white dark:bg-slate-900 dark:hover:bg-slate-800`}>
           <motion.div
               initial={{ opacity: 0, scale: Math.random() }}
               transition={{ duration: 0.3, delay: Math.random() }}
@@ -92,10 +92,10 @@ const LocaleDropdown = () => {
               key={locale.code}
             >
              
-                <button className="m-0.5">
-                    <span className="dark:text-slate-400 text-center text-sm p-2">
+                <button className="">
+                    <p className="dark:text-slate-400 text-sm capitalize p-2 text-center">
                       {locale.name}
-                    </span>
+                    </p>
                 </button>
            
               

@@ -141,7 +141,7 @@ const WordDetails = ({ data }) => {
           <span>{meta_localization[target_locale].heading.split("$$$")[1]}</span>
         </p>
       </div>
-      <div className="flex justify-end items-center">
+      <div className="flex justify-end items-center my-2">
         <div className="text-primary-500 text-xs mx-2">{word.views}</div>
         <div>
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 fill-primary-500" viewBox="0 0 20 20">
@@ -172,7 +172,7 @@ const WordDetails = ({ data }) => {
  
     
       }
-      <div>
+      <div className="flex justify-center">
         <img word={word.word} className="shadow-lg rounded h-auto border-none mt-5" src={`https://api.inasentence.me/image_generator_testing?text=${word.word}`} ></img>
       </div>
       </div>

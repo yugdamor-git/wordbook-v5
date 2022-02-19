@@ -22,7 +22,7 @@ const Player = ({ data }) => {
       </div>
       <div className="flex items-center text-gray-400 dark:text-gray-600">
           <div>
-            <h1 className="text-xl font-bold">{data.word}</h1>
+            <h1 className="capitalize text-xl font-bold">{data.word}</h1>
           </div>
           <div className="pt-2 pl-1 text-sm">
             <h1>{data.part_of_speech}</h1>

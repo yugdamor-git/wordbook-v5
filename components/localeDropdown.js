@@ -79,6 +79,9 @@ const LocaleDropdown = () => {
         {locales.map(
         (locale) =>
           locale.default == false &&
+          <Link
+          href={`/en/${locale.code}/${current_word.replace(" ", "-")}`}
+        >
           <Menu.Item as="div" className={`${locale.code == current_locale ? "bg-primary-50 text-primary-500 ":"bg-gray-50 "} transition ease-in-out delay-150 flex items-center mt-2 rounded hover:bg-primary-500 hover:text-white dark:bg-slate-900 dark:hover:bg-slate-800`}>
           <motion.div
               initial={{ opacity: 0, scale: Math.random() }}
@@ -88,18 +91,17 @@ const LocaleDropdown = () => {
               viewport={{ once: true }}
               key={locale.code}
             >
-              <Link
-                href={`/en/${locale.code}/${current_word.replace(" ", "-")}`}
-              >
+             
                 <button className="m-0.5">
                     <span className="dark:text-slate-400 text-center text-sm p-2">
                       {locale.name}
                     </span>
                 </button>
-              </Link>
+           
               
             </motion.div>
             </Menu.Item>
+               </Link>
         )
         }
 

@@ -82,12 +82,12 @@ const Defination = ({ d, index }) => {
     <div className="px-4 mt-4 py-2 border-y-2 border-gray-300 dark:border-gray-600">
       <div>
         <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-2">
-        <h1 className="text-primary-500 font-semibold">
+        <p className="text-primary-500 font-semibold">
           {index}. {d.localization[target_locale]}
-        </h1>
-        <h1 className="text-sm text-gray-400 dark:text-gray-500">
+        </p>
+        <p className="text-sm text-gray-400 dark:text-gray-500">
           {index}. {d.defination}
-        </h1>
+        </p>
         </div>
         
         <div className=" my-2 dark:border-gray-600">

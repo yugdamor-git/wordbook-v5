@@ -11,6 +11,19 @@ const WordDetails = ({ data }) => {
   const target_locale = router.query.locale
   const word = data[0]
 
+  const locale_to_lang = {
+    hi:"hindi",
+    ta:"tamil",
+    te:"telugu",
+    bn:"bengali",
+    kn:"kannada",
+    mr:"marathi",
+    ml:"malayalam",
+    gu:"gujarati",
+    pa:"punjabi",
+    ur:"urdu"
+  }
+
   const meta_localization = {
     "hi":{
       "definations":"परिभाषाएं",
@@ -117,7 +130,12 @@ const WordDetails = ({ data }) => {
       }}
     />
       <div>
-        <p className="text-gray-500 font-semibold text-sm md:text-xl">
+        <p className="text-lg text-gray-600 mb-2 capitalize shadow p-2 rounded-full text-center dark:text-gray-400">
+          <span className="font-bold">{word.word}</span> meaning in <span className="font-bold">{locale_to_lang[target_locale]}</span>
+        </p>
+      </div>
+      <div>
+        <p className="text-gray-500 font-semibold text-sm md:text-xl text-center">
           <span>{meta_localization[target_locale].heading.split("$$$")[0]}</span>
           <span className="text-primary-500 font-bold">{word.word}</span>
           <span>{meta_localization[target_locale].heading.split("$$$")[1]}</span>
@@ -155,7 +173,7 @@ const WordDetails = ({ data }) => {
     
       }
       <div>
-        <img word={word.word} className="shadow-lg rounded max-w-full h-auto align-middle border-none mt-5" src={`https://api.inasentence.me/image_generator_testing?text=${word.word}`} ></img>
+        <img word={word.word} className="shadow-lg rounded h-auto border-none mt-5" src={`https://api.inasentence.me/image_generator_testing?text=${word.word}`} ></img>
       </div>
       </div>
       

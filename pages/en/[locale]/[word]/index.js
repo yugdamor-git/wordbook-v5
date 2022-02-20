@@ -72,10 +72,6 @@ export async function getStaticProps({ params }) {
       .toArray()
   );
   return {
-    redirect: {
-      permanent: false,
-      destination: "/login",
-    },
     props: { data, suggestion_words },revalidate:60
   };
 }

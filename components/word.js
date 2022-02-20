@@ -107,13 +107,13 @@ const WordDetails = ({ data }) => {
     <div className="p-2 m-1">
 
       <NextSeo
-      title={`${word.word} meaning and definition `}
-      description={`Know the real meaning of ${word.word} with simple examples and definitions.`}
+      title="WordBook"
+      description={`The easy to understand dictionary with Example Sentences , Famous Quotes and Audio Pronunciations`}
       canonical="https://uptoword.com/"
       openGraph={{
         url: 'https://uptoword.com/',
-        title: 'Word Book',
-        description: 'The easy to understand dictionary with Example Sentences , Famous Quotes and Audio Pronunciations',
+        title: `${word.word} meaning and definition.`,
+        description:`Know the real meaning of ${word.word} with simple examples and definitions.` ,
         images: [
           {
             url: `https://api.inasentence.me/image_generator_testing?text=${word.word}`,

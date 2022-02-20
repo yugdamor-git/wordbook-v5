@@ -4,6 +4,7 @@ import Footer from './footer'
 import Navbar from './navbar'
 import Search from './search';
 import { NextSeo } from 'next-seo';
+import Head from 'next/head';
 
 const Layout = ({ children }) => {
 
@@ -21,29 +22,15 @@ const Layout = ({ children }) => {
   const [darkMode,setDarkMode] = useState(false)
 
   return <div className={`${darkMode ? "dark bg-black " : " "}font-Montserrat flex flex-col h-screen justify-between`}>
-     <NextSeo
-      title="WordBook"
-      description="The easy to understand dictionary with Example Sentences , Famous Quotes and Audio Pronunciations"
-      canonical="https://uptoword.com/"
-      openGraph={{
-        url: 'https://uptoword.com/',
-        title: 'Word Book',
-        description: 'The easy to understand dictionary with Example Sentences , Famous Quotes and Audio Pronunciations',
-        images: [
-          {
-            url: 'https://uptoword.com/images/wordbook.png',
-            width: 320,
-            height: 220,
-            alt: 'Home Image',
-            type: 'image/jpeg',
-          },
-        ],
-        site_name: 'uptoword',
-      }}
-      twitter={{
-        cardType: 'The easy to understand dictionary with Example Sentences , Famous Quotes and Audio Pronunciations',
-      }}
-    />
+    <Head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+        <link rel="manifest" href="/site.webmanifest"/>
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"/>
+        <meta name="msapplication-TileColor" content="#da532c"/>
+        <meta name="theme-color" content="#6366f1"/>
+    </Head>
     
     <div className="dark:bg-black h-fit">
       <Navbar darkMode={darkMode} enableDark={setDarkModeStorage}/>

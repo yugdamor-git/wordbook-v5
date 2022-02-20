@@ -66,11 +66,7 @@ const Alphabet = ({ data }) => {
   return (
     <div>
       <BreadCrumb breadcrum_items={breadcrum_items}/>
-    <motion.div
-      initial={{ y: 120 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 1 }}
-    >
+    <div>
       <h1 className="text-center text-primary-500 font-semibold">
         Browse the Dictionary
       </h1>
@@ -98,7 +94,7 @@ const Alphabet = ({ data }) => {
           pageType="alphabet"
         ></Pagination>
       </div>
-    </motion.div>
+    </div>
     </div>
   );
 };

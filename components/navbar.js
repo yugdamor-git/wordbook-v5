@@ -64,8 +64,8 @@ const Navbar = ({ darkMode , enableDark}) => {
                 </svg>
               </div>
               <Link href="/">
-                <div className="mx-2 font-bold text-primary-600 dark:text-primary-500">
-                  Word Book
+                <div className="mx-2 font-bold text-primary-600 dark:text-primary-500 cursor-pointer">
+                 UpToWord
                 </div>
               </Link>
               

@@ -3,9 +3,9 @@ import Link from 'next/link';
 import React from 'react';
 
 const WordButton = ({word,href,duration}) => {
-  return <motion.div initial={{ opacity: 0, scale:Math.random() }} transition={{ duration: 0.3,delay: Math.random() }} exit={{opacity: 0, scale:0}} whileInView={{ opacity: 1,scale:1 }} viewport={{ once: true }} key={word}>
+  return <div>
          <Link href={href} passHref>
-                  <div className="transition ease-in-out delay-150 flex items-center mt-2 bg-gray-50 rounded mx-2 p-2 hover:bg-primary-50 hover:text-primary-500 hover:font-semibold dark:bg-slate-900 dark:hover:bg-slate-800">
+                  <div className="cursor-pointer flex items-center mt-2 bg-gray-50 rounded mx-2 p-2 hover:bg-primary-50 hover:text-primary-500 hover:font-semibold dark:bg-slate-900 dark:hover:bg-slate-800">
                     
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 fill-primary-500 pr-1" viewBox="0 0 19 19">
@@ -18,7 +18,7 @@ const WordButton = ({word,href,duration}) => {
                       
                   </div>
                   </Link>
-  </motion.div>;
+  </div>
 
 };
 

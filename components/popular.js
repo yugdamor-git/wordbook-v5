@@ -11,7 +11,7 @@ const Popular = ({words}) => {
           {
               words.map(word => (
                   <div key={word._id}>
-                      <WordButton word={word.word} href={`/en/hi/${word.word}`}/>
+                      <WordButton word={word.word} href={`/en/hi/${word.word.replaceAll(" ","-")}`}/>
                   </div>
                   
               ))

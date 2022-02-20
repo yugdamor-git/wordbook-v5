@@ -47,7 +47,7 @@ const Word = ({data,suggestion_words}) => {
 
 
 export async function getStaticProps({ params }) {
-  const current_word = decodeURI(params.word).replaceAll("-", " ");
+  const current_word = decodeURI(params.word).replaceAll("-", " ").toLocaleLowerCase();
 
   const { db } = await connectToDatabase();
 
@@ -72,6 +72,10 @@ export async function getStaticProps({ params }) {
       .toArray()
   );
   return {
+    redirect: {
+      permanent: false,
+      destination: "/login",
+    },
     props: { data, suggestion_words },revalidate:60
   };
 }

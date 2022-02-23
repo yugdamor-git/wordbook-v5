@@ -85,7 +85,7 @@ const DictionaryLangs = ({words,pagination,meta}) => {
   return (
     <div>
       <h1 className="text-xl font-bold text-center my-4 capitalize text-primary-500">{`${meta.slug.replaceAll("-"," ")} Dictionary`} </h1>
-      <p className="text-gray-500 p-2 text-sm text-center capitalize">Learn the meaning of thousands of words in Hindi with our English to Hindi dictionary.<br></br>Not just the meaning, get definition, examples, antonyms, synonyms of words.</p>
+      <p className="text-gray-500 p-2 text-sm text-center capitalize">Learn the meaning of thousands of words in Hindi with our English to {target} dictionary.<br></br>Not just the meaning, get definition, examples, antonyms, synonyms of words.</p>
       <NavbarSearch target_locale={target}/>
       <Browse />
       <div>

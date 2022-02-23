@@ -11,7 +11,7 @@ const Locales = ({ languages }) => {
                 
 
                 
-                                <Link key={lang.code} href={`/en/dictionary/english-to-${lang.name}/1?startsWith=a`}>
+                                <Link key={lang.code} href={`/en/dictionary/english-to-${lang.name}/1`}>
                 <div className={`${lang.default ? "hidden" : ""} bg-gray-50 m-4 p-4 rounded-xl text-center hover:text-primary-500 hover:bg-primary-50 hover:font-semibold shadow cursor-pointer dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800`}>
                     <span>English To <span className="text-indigo-500 capitalize">{lang.name}</span></span>
                 </div>

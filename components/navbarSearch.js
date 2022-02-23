@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import SearchResult from "./searchResult";
-import WordButton from "./wordButton";
 
 const NavbarSearch = ({ target_locale}) => {
 
@@ -36,7 +35,7 @@ const NavbarSearch = ({ target_locale}) => {
         {
             const resp = await fetch(`/api/search?locale=${current_locale}&q=${value}`)
             const json_obj = await resp.json()
-            console.log(json_obj)
+
             setResults(json_obj.data)
         }
 

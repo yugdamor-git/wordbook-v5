@@ -15,10 +15,6 @@ let navbar_items = [
     href: "/en",
   },
   {
-    name: "Browse",
-    href: "/browse/a/page/1",
-  },
-  {
     name: "Top 200",
     href: "/top/200",
   },

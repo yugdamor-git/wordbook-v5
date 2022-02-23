@@ -10,6 +10,13 @@ const Pagination = ({current_page,max_page,pageType}) => {
 
     const size = 1
 
+    let startsWith = router.query.startsWith
+
+    if (startsWith == null)
+    {
+        startsWith = "a"
+    }
+
     let pages = []
 
     if (current_page > 1)
@@ -18,7 +25,7 @@ const Pagination = ({current_page,max_page,pageType}) => {
         {
             pages.push({
                 name:"Prev",
-                href:`/en/dictionary/${router.query.slug}/${current_page - 1}?startsWith=${router.query.startsWith}`
+                href:`/en/dictionary/${router.query.slug}/${current_page - 1}?startsWith=${startsWith}`
             })
         }
         else if (pageType == "locale")
@@ -39,7 +46,7 @@ const Pagination = ({current_page,max_page,pageType}) => {
             {
                 pages.push({
                     name:i,
-                    href:`/en/dictionary/${router.query.slug}/${i}?startsWith=${router.query.startsWith}`
+                    href:`/en/dictionary/${router.query.slug}/${i}?startsWith=${startsWith}`
                 })
             }
             else if (pageType == "locale")
@@ -68,7 +75,7 @@ const Pagination = ({current_page,max_page,pageType}) => {
                     {
                         pages.push({
                             name:i,
-                            href:`/en/dictionary/${router.query.slug}/${i}?startsWith=${router.query.startsWith}`
+                            href:`/en/dictionary/${router.query.slug}/${i}?startsWith=${startsWith}`
                         })
                     }
                     else if (pageType == "locale")
@@ -89,7 +96,7 @@ const Pagination = ({current_page,max_page,pageType}) => {
         {
             pages.push({
                 name:"Next",
-                href:`/en/dictionary/${router.query.slug}/${current_page + 1}?startsWith=${router.query.startsWith}`
+                href:`/en/dictionary/${router.query.slug}/${current_page + 1}?startsWith=${startsWith}`
             })
         }
         else if (pageType == "locale")

@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import BreadCrumb from '../../../../components/breadCrumb';
 import LocaleDropdown from '../../../../components/localeDropdown';
+import NavbarSearch from '../../../../components/navbarSearch';
 import Suggestions from '../../../../components/suggestions';
 import WordDetails from '../../../../components/word';
 import { connectToDatabase } from '../../../../lib/mongodb';
@@ -39,15 +40,15 @@ const Word = ({data,suggestion_words}) => {
   ]
 
   return <div className="py-2">
-    
+    <NavbarSearch/>
    <WordDetails data={word} ></WordDetails>
    <Suggestions words={w_suggestions}/>
   </div>;
 };
 
 
-export async function getStaticProps({ params }) {
-  const current_word = decodeURI(params.word).replaceAll("-", " ").toLocaleLowerCase();
+export async function getServerSideProps(context) {
+  const current_word = decodeURI(context.params.word).replaceAll("-", " ").toLowerCase();
 
   const { db } = await connectToDatabase();
 
@@ -55,6 +56,17 @@ export async function getStaticProps({ params }) {
     .collection(process.env.DATA_COLLECTION)
     .find({ word: current_word })
     .toArray();
+
+  if (w.length == 0)
+  {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/404"
+      }
+    }
+  }
+  
 
   const data = JSON.stringify(w);
 
@@ -71,52 +83,53 @@ export async function getStaticProps({ params }) {
       .limit(20)
       .toArray()
   );
+
   return {
-    props: { data, suggestion_words },revalidate:60
+    props: { data, suggestion_words }
   };
 }
 
 
 
-export async function getStaticPaths() {
+// export async function getStaticPaths() {
 
-  const { db } = await connectToDatabase();
+//   const { db } = await connectToDatabase();
 
-  const words = await db
-      .collection(process.env.DATA_COLLECTION)
-      .find({})
-      .sort({views:-1,likes:-1})
-      .project({ word: 1 })
-      .limit(10)
-      .toArray()
+//   const words = await db
+//       .collection(process.env.DATA_COLLECTION)
+//       .find({})
+//       .sort({views:-1,likes:-1})
+//       .project({ word: 1 })
+//       .limit(10)
+//       .toArray()
 
-  const l = await db.collection("locales").find({}).toArray()
+//   const l = await db.collection("locales").find({}).toArray()
 
-  let paths = []
+//   let paths = []
 
-  words.map(w =>{
+//   words.map(w =>{
 
-    l.map(locale=>{
-      if (locale["code"] != "en")
-      {
-        paths.push({
-          params:{
-            word:w.word,locale:locale["code"]
-          }
-        })
-      }
+//     l.map(locale=>{
+//       if (locale["code"] != "en")
+//       {
+//         paths.push({
+//           params:{
+//             word:w.word,locale:locale["code"]
+//           }
+//         })
+//       }
      
-    })
+//     })
     
-  }
+//   }
    
-  )
+//   )
 
 
-  return { paths, fallback: "blocking" }
+//   return { paths, fallback: "blocking" }
 
 
-}
+// }
 
 
 

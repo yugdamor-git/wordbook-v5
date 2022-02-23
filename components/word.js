@@ -130,12 +130,12 @@ const WordDetails = ({ data }) => {
       }}
     />
       <div>
-        <p className="text-xl text-gray-600 mb-2 capitalize shadow p-2 rounded-full text-center dark:text-gray-400">
-          <span className="font-bold">{word.word}</span> meaning in <span className="font-bold">{locale_to_lang[target_locale]}</span>
+        <p className="text-lg md:text-3xl text-gray-600 mb-2 capitalize p-2 text-center dark:text-gray-400">
+          <h1><span className="font-bold">{word.word}</span> meaning in <span className="font-bold">{locale_to_lang[target_locale]}</span></h1>
         </p>
       </div>
       <div>
-        <p className="text-gray-500 font-semibold text-center">
+        <p className="text-gray-500 font-semibold text-center text-[16px]">
           <span>{meta_localization[target_locale].heading.split("$$$")[0]}</span>
           <span className="text-primary-500 font-bold">{word.word}</span>
           <span>{meta_localization[target_locale].heading.split("$$$")[1]}</span>

@@ -35,13 +35,9 @@ const SearchPage = ({ data }) => {
   return (
     <div className="py-4">
       <BreadCrumb breadcrum_items={breadcrum_items}/>
-      <motion.div
-        initial={{ y: 140 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
+      <div>
         <Search />
-      </motion.div>
+      </div>
 
       {words.map((item) => (
         <WordButton

@@ -3,6 +3,7 @@ import Search from "./search";
 import { Menu, Transition } from "@headlessui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import NavbarSearch from "./navbarSearch";
 
 let navbar_items = [
   {
@@ -47,7 +48,8 @@ const Navbar = ({ darkMode , enableDark}) => {
       <nav>
         <Menu>
           <div className="flex items-center justify-between">
-            <div className="flex justify-items-center">
+          <Link href="/">
+            <div className="flex justify-items-center cursor-pointer">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -63,13 +65,14 @@ const Navbar = ({ darkMode , enableDark}) => {
                   />
                 </svg>
               </div>
-              <Link href="/">
+              
                 <div className="mx-2 font-bold text-primary-600 dark:text-primary-500 cursor-pointer">
                  UpToWord
                 </div>
-              </Link>
+           
               
             </div>
+            </Link>
             { searchbar_active &&
                     <div className="hidden lg:block">
                     <Search />
@@ -127,7 +130,7 @@ const Navbar = ({ darkMode , enableDark}) => {
               </div>
             </div>
             <div className="lg:hidden flex items-center">
-              <div className="">
+              <div className="mx-2">
                 <button onClick={enableDarkMode}>
                   {darkMode && (
                     <svg
@@ -154,23 +157,7 @@ const Navbar = ({ darkMode , enableDark}) => {
                   )}
                 </button>
               </div>
-              <div className="mx-2">
-                <Link href={`/search/${current_locale != null ? current_locale : "hi"}?q=`}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-7 w-7 stroke-gray-500 hover:stroke-primary-500 dark:stroke-slate-500 dark:hover:stroke-primary-500"
-                    fill="none"
-                    viewBox="0 0 28 28"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                </Link>
-              </div>
+              
               <div>
                 <Menu.Button>
                   <svg
@@ -218,26 +205,6 @@ const Navbar = ({ darkMode , enableDark}) => {
                   </Link>
                 ))}
 
-                {/* <Menu.Item>
-                  <div className="p-2 my-1 rounded hover:bg-primary-50 hover:text-indigo-500 bg-gray-50 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800">
-                    <Link href="/en">All Words</Link>
-                  </div>
-                </Menu.Item>
-                <Menu.Item>
-                  <div className="p-2 my-1 rounded hover:bg-primary-50 hover:text-indigo-500 bg-gray-50 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800">
-                    <Link href="/browse/a">Browse</Link>
-                  </div>
-                </Menu.Item>
-                <Menu.Item>
-                  <div className="p-2 my-1 rounded hover:bg-primary-50 hover:text-indigo-500 bg-gray-50 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800">
-                    <Link href="/top/150">Top 150</Link>
-                  </div>
-                </Menu.Item>
-                <Menu.Item>
-                  <div className="p-2 my-1 rounded hover:bg-primary-50 hover:text-indigo-500 bg-gray-50 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800">
-                    <Link href="/top/200">Top 200</Link>
-                  </div>
-                </Menu.Item> */}
               </div>
             </Menu.Items>
           </Transition>

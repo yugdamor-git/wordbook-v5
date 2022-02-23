@@ -18,7 +18,7 @@ const Pagination = ({current_page,max_page,pageType}) => {
         {
             pages.push({
                 name:"Prev",
-                href:`/browse/${router.query.alphabet}/page/${current_page - 1}`
+                href:`/en/dictionary/${router.query.slug}/${current_page - 1}?startsWith=${router.query.startsWith}`
             })
         }
         else if (pageType == "locale")
@@ -39,7 +39,7 @@ const Pagination = ({current_page,max_page,pageType}) => {
             {
                 pages.push({
                     name:i,
-                    href:`/browse/${router.query.alphabet}/page/${i}`
+                    href:`/en/dictionary/${router.query.slug}/${i}?startsWith=${router.query.startsWith}`
                 })
             }
             else if (pageType == "locale")
@@ -68,7 +68,7 @@ const Pagination = ({current_page,max_page,pageType}) => {
                     {
                         pages.push({
                             name:i,
-                            href:`/browse/${router.query.alphabet}/page/${i}`
+                            href:`/en/dictionary/${router.query.slug}/${i}?startsWith=${router.query.startsWith}`
                         })
                     }
                     else if (pageType == "locale")
@@ -89,7 +89,7 @@ const Pagination = ({current_page,max_page,pageType}) => {
         {
             pages.push({
                 name:"Next",
-                href:`/browse/${router.query.alphabet}/page/${current_page + 1}`
+                href:`/en/dictionary/${router.query.slug}/${current_page + 1}?startsWith=${router.query.startsWith}`
             })
         }
         else if (pageType == "locale")

@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import BreadCrumb from '../../../../components/breadCrumb';
+import NavbarSearch from '../../../../components/navbarSearch';
 import Pagination from '../../../../components/pagination';
 import WordButton from '../../../../components/wordButton';
 import { connectToDatabase } from '../../../../lib/mongodb';
@@ -47,6 +48,7 @@ const Locale = ({data}) => {
     let duration_offset = 0.01
     let duration = 0
   return <div>
+      <NavbarSearch/>
       <BreadCrumb breadcrum_items={breadcrum_items}/>
       <h1 className="text-center text-primary-500 font-semibold my-2">Choose Word</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-gray-500 text-sm">

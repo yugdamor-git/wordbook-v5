@@ -36,7 +36,8 @@ const meta_localization = {
     "synonyms":"समानार्थी शब्द",
     "antonyms":"विलोम शब्द",
     "heading":`सरल उदाहरणों और परिभाषाओं के साथ $$$ का वास्तविक अर्थ जानें।.`,
-    "meta_title":"अर्थ"
+    "meta_title":"का अर्थ",
+    "desc":`पढ़ें $$$ का मतलब हिंदी में`
   },
   "gu":{
     "definations":"વ્યાખ્યાઓ",
@@ -44,7 +45,8 @@ const meta_localization = {
     "synonyms":"સમાનાર્થી શબ્દો",
     "antonyms":"વિરોધી શબ્દો",
     "heading":`સરળ ઉદાહરણો અને વ્યાખ્યાઓ સાથે $$$ નો વાસ્તવિક અર્થ જાણો.`,
-    "meta_title":"અર્થ"
+    "meta_title":"નો અર્થ",
+    "desc":"ગુજરાતીમાં $$$ નો અર્થ વાંચો"
   },
   "ta":{
     "definations":"வரையறைகள்",
@@ -52,7 +54,8 @@ const meta_localization = {
     "synonyms":"இணைச்சொற்கள்",
     "antonyms":"எதிர்ச்சொற்கள்",
     "heading":`எளிய எடுத்துக்காட்டுகள் மற்றும் வரையறைகளுடன் $$$ இன் உண்மையான அர்த்தத்தை அறியவும்.`,
-    "meta_title":"பொருள்"
+    "meta_title":"பொருள்",
+    "desc":"தமிழில் $$$ என்பதன் பொருளைப் படியுங்கள்"
   },
   "te":{
     "definations":"నిర్వచనాలు",
@@ -60,7 +63,8 @@ const meta_localization = {
     "synonyms":"పర్యాయపదాలు",
     "antonyms":"వ్యతిరేక పదాలు",
     "heading":`సాధారణ ఉదాహరణలు మరియు నిర్వచనాలతో $$$ యొక్క నిజమైన అర్థాన్ని తెలుసుకోండి.`,
-    "meta_title":"అర్థం"
+    "meta_title":"యొక్క అర్థం",
+    "desc":"తెలుగులో $$$ అర్థం చదవండి"
   },
   "bn":{
     "definations":"সংজ্ঞা",
@@ -68,7 +72,8 @@ const meta_localization = {
     "synonyms":"সমার্থক শব্দ",
     "antonyms":"বিপরীতার্থক শব্দ",
     "heading":`সাধারণ উদাহরণ এবং সংজ্ঞা সহ $$$ এর আসল অর্থ জানুন।.`,
-    "meta_title":"অর্থ"
+    "meta_title":"এর অর্থ",
+    "desc":"বাংলায় $$$ এর অর্থ পড়ুন"
   },
   "kn":{
     "definations":"ವ್ಯಾಖ್ಯಾನಗಳು",
@@ -76,7 +81,8 @@ const meta_localization = {
     "synonyms":"ಸಮಾನಾರ್ಥಕ ಪದಗಳು",
     "antonyms":"ವಿರುದ್ಧಾರ್ಥಕ ಪದಗಳು",
     "heading":`ಸರಳ ಉದಾಹರಣೆಗಳು ಮತ್ತು ವ್ಯಾಖ್ಯಾನಗಳೊಂದಿಗೆ $$$ ನ ನಿಜವಾದ ಅರ್ಥವನ್ನು ತಿಳಿಯಿರಿ.`,
-    "meta_title":"ಅರ್ಥ"
+    "meta_title":"ನ ಅರ್ಥ",
+    "desc":"ಕನ್ನಡದಲ್ಲಿ $$$ ಅರ್ಥವನ್ನು ಓದಿ"
   },
   "mr":{
     "definations":"व्याख्या",
@@ -84,7 +90,8 @@ const meta_localization = {
     "synonyms":"समानार्थी शब्द",
     "antonyms":"विरुद्धार्थी शब्द",
     "heading":`सोप्या उदाहरणे आणि व्याख्यांसह $$$ चा खरा अर्थ जाणून घ्या.`,
-    "meta_title":"अर्थ"
+    "meta_title":"च्या अर्थ",
+    "desc":"$$$ चा अर्थ मराठीत वाचा"
   },
   "ml":{
     "definations":"നിർവചനങ്ങൾ",
@@ -92,7 +99,8 @@ const meta_localization = {
     "synonyms":"പര്യായങ്ങൾ",
     "antonyms":"വിപരീതപദങ്ങൾ",
     "heading":`ലളിതമായ ഉദാഹരണങ്ങളും നിർവചനങ്ങളും ഉപയോഗിച്ച് $$$ എന്നതിന്റെ യഥാർത്ഥ അർത്ഥം മനസ്സിലാക്കുക.`,
-    "meta_title":"അർത്ഥം"
+    "meta_title":"യുടെ അർത്ഥം",
+    "desc":"മലയാളത്തിൽ $$$ എന്നതിന്റെ അർത്ഥം വായിക്കുക"
   },
   "pa":{
     "definations":"ਪਰਿਭਾਸ਼ਾਵਾਂ",
@@ -100,7 +108,8 @@ const meta_localization = {
     "synonyms":"ਸਮਾਨਾਰਥੀ ਸ਼ਬਦ",
     "antonyms":"ਵਿਰੋਧੀ ਸ਼ਬਦ",
     "heading":`ਸਧਾਰਨ ਉਦਾਹਰਣਾਂ ਅਤੇ ਪਰਿਭਾਸ਼ਾਵਾਂ ਦੇ ਨਾਲ $$$ ਦਾ ਅਸਲ ਅਰਥ ਜਾਣੋ।.`,
-    "meta_title":"ਮਤਲਬ"
+    "meta_title":"ਦੇ ਮਤਲਬ",
+    "desc":"ਪੰਜਾਬੀ ਵਿੱਚ $$$ ਦਾ ਅਰਥ ਪੜ੍ਹੋ"
   },
   "ur":{
     "definations":"تعریفیں",
@@ -108,7 +117,8 @@ const meta_localization = {
     "synonyms":"مترادفات",
     "antonyms":"متضاد الفاظ",
     "heading":`سادہ مثالوں اور تعریفوں کے ساتھ $$$ کا حقیقی معنی جانیں۔`,
-    "meta_title":"معنی"
+    "meta_title":"کا معنی",
+    "desc":"اردو میں $$$ کا مطلب پڑھیں"
   },
   
 }
@@ -136,9 +146,10 @@ const Word = ({data,suggestion_words}) => {
 
   const seo = {
     site_name:"UpToWord",
-    url :`https://uptoword.com`,
+    url :`https://uptoword.com${router.asPath}`,
     title:`Trust Meaning In ${locale_meta.name_upper} - ${word[0].localization[locale_meta.code].word} ${meta_localization[locale_meta.code].meta_title}`,
-    desc : "Find word meaning from English to your language. Free online dictionary to find word meanings."
+    desc : `Meaning of ${word[0].word} in ${locale_meta.name_upper} language with definitions, examples, antonym, synonym. ${meta_localization[locale_meta.code].desc.replace("$$$",word[0].localization[locale_meta.code].word)}.`,
+    locale: locale_meta.code,
   }
  
   return <div className="py-2">
@@ -150,6 +161,15 @@ const Word = ({data,suggestion_words}) => {
         title: seo.title,
         description:seo.desc,
         site_name: seo.site_name,
+        locale:seo.locale,
+        images : [
+          {
+            url: `https://api.uptoword.com/generate_image?text=${word[0].word}&locale=${locale_meta.name}`,
+            width: 1200,
+            height: 675,
+            alt: `${word[0].word} in a sentence`,
+          }
+        ]
 
       }}
       />

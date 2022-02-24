@@ -2,7 +2,10 @@ import { NextResponse } from 'next/server'
 
 export function middleware(request) {
   let url = request.nextUrl.clone()
-  let pathname = url.pathname.toLowerCase()
+  let pathname = decodeURI(url.pathname.toLowerCase()).replaceAll(" ","-")
+
+  console.log(pathname)
+
   if (url.pathname == '/browse' || url.pathname == '/browse/a') {
     url.pathname = '/browse/a/page/1'
   }

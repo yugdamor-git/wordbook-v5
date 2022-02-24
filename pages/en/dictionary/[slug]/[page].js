@@ -89,7 +89,7 @@ const DictionaryLangs = ({words,pagination,meta}) => {
   const seo = {
     site_name:"UpToWord",
     url :`https://uptoword.com${router.asPath}`,
-    title:`English To ${meta.locale_name_upper} Dictionary - ${meta.locale_title}. Translate "${meta.locale_name_upper} Dictionary" to get ${meta.locale_title}`,
+    title:`English To ${meta.locale_name_upper} Dictionary - ${meta.locale_title}`,
     desc : `English to ${meta.locale_name_upper} dictionary to learn the meaning of words. ${meta.locale_name_upper} Dictionary to get definition, meaning, sentence examples of words.`
   }
 

@@ -1,3 +1,4 @@
+import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -7,6 +8,9 @@ const Custom404 = () => {
 
   return (
     <div className="flex items-center justify-center my-56">
+      <NextSeo
+      noindex={true}
+      />
         <div className="m-auto">
             <div className="text-2xl md:text-4xl font-bold text-primary-500 m-2 text-center">404</div>
             <div>

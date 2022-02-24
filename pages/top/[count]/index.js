@@ -1,3 +1,4 @@
+import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -16,6 +17,9 @@ const TopWords = ({ top_words }) => {
 
   return (
     <div>
+      <NextSeo
+      noindex={true}
+      />
       <div className="text-center my-2 font-semibold text-primary-500">
         <h1>Top {count} Words</h1>
       </div>

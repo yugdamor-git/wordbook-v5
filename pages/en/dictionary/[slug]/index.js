@@ -98,6 +98,7 @@ const DictionaryLangsDefault = ({words,pagination,meta}) => {
     <div>
 
     <NextSeo
+    noindex={router.query.page == null ? false :true}
       title={seo.title}
       description={seo.desc}
       openGraph={{

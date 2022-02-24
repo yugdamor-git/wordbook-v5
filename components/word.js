@@ -95,12 +95,10 @@ const WordDetails = ({ data }) => {
       "antonyms":"متضاد الفاظ",
       "heading":`سادہ مثالوں اور تعریفوں کے ساتھ $$$ کا حقیقی معنی جانیں۔`
     },
-    // "ta":{
-    //   "defination":""
-    // }
     
   }
 
+  const t_word = locale_to_lang[target_locale]
 
 
   return (
@@ -116,7 +114,7 @@ const WordDetails = ({ data }) => {
         description:`Know the real meaning of ${word.word} with simple examples and definitions.` ,
         images: [
           {
-            url: `https://api.inasentence.me/image_generator_testing?text=${word.word}`,
+            url: `https://api.uptoword.com/generate_image?text=${word.word}&locale=${locale_to_lang[target_locale]}`,
             width: 320,
             height: 220,
             alt: 'Home Image',
@@ -131,7 +129,7 @@ const WordDetails = ({ data }) => {
     />
       <div>
         <p className="text-lg md:text-3xl text-gray-600 mb-2 capitalize p-2 text-center dark:text-gray-400">
-          <h1><span className="font-bold">{word.word}</span> meaning in <span className="font-bold">{locale_to_lang[target_locale]}</span></h1>
+          <h1><span className="font-bold">{word.word.charAt(0).toUpperCase() + word.word.slice(1)}</span> Meaning In <span className="font-bold">{locale_to_lang[target_locale]}</span></h1>
         </p>
       </div>
       <div>
@@ -173,7 +171,7 @@ const WordDetails = ({ data }) => {
     
       }
       <div className="flex justify-center">
-        <img word={word.word} className="shadow-lg rounded h-auto border-none mt-5" src={`https://api.inasentence.me/image_generator_testing?text=${word.word}`} ></img>
+        <img word={word.word} className="shadow-lg rounded h-auto border-none mt-5" src={`https://api.uptoword.com/generate_image?text=${word.word}&locale=${locale_to_lang[target_locale]}`} ></img>
       </div>
       </div>
       

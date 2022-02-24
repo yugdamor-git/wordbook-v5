@@ -11,7 +11,7 @@ const SearchResult = ({ word, href, onclickEvent }) => {
     
     <div className="flex mx-2 my-2">
       
-          <div className="cursor-pointer flex items-center mt-2 hover:bg-primary-50 hover:text-primary-500 hover:font-semibold dark:bg-slate-900 dark:hover:bg-slate-800">
+          <div className="cursor-pointer flex items-center mt-2 hover:text-primary-500 dark:bg-slate-900 dark:hover:bg-slate-800">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

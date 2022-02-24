@@ -34,12 +34,12 @@ const TopWords = ({ top_words }) => {
   );
 };
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps(context) {
 
   const { db } = await connectToDatabase();
 
 
-  const count = + params.count;
+  const count = + context.query.count;
   const top_words = JSON.stringify(
     await db.collection(process.env.DATA_COLLECTION)
     .find({})
@@ -50,19 +50,8 @@ export async function getStaticProps({ params }) {
   );
 
   return {
-    props: { top_words },revalidate: 60,
+    props: { top_words }
   };
 }
 
 export default TopWords;
-
-export async function getStaticPaths() {
-const paths = [{
-  params:{count:"200"}
-}]
-
-
-return { paths, fallback: 'blocking' }
-
-}
-

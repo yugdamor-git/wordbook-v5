@@ -168,7 +168,7 @@ export async function getServerSideProps(context) {
 
   let lang = slug[1]
 
-
+  const lang_code = locale_to_lang[lang]
   const current_word = decodeURI(word).replaceAll("-", " ").toLowerCase();
 
   const { db } = await connectToDatabase();
@@ -178,7 +178,7 @@ export async function getServerSideProps(context) {
     .find({ word: current_word })
     .toArray();
 
-  if (w.length == 0)
+  if (w.length == 0 || lang_code == null)
   {
     return {
       redirect: {

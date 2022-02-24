@@ -22,7 +22,7 @@ const TopWords = ({ top_words }) => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-gray-500 text-sm">
         {words.map((word) => (
           <div key={word.id}>
-            <WordButton word={word.word} href={`/en/hi/${word.word}`} />
+            <WordButton word={word.word} href={`/en/${word.word.replaceAll(" ","-")}-meaning-in-hindi`} />
           </div>
         ))}
       </div>

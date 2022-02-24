@@ -6,130 +6,36 @@ import Defination from "./defination";
 import LocaleDropdown from "./localeDropdown";
 import Player from "./player";
 
-const WordDetails = ({ data }) => {
+
+
+const WordDetails = ({ data,locale_meta,locale_to_lang,meta_localization }) => {
   const router = useRouter();
-  const target_locale = router.query.locale
+
+  
+
+  const target_locale = locale_meta.code
+
+  let slug = router.query.slug.replace("-meaning-in-",":::").split(":::")
+
+  let lang = slug[1]
+
   const word = data[0]
 
-  const locale_to_lang = {
-    hi:"hindi",
-    ta:"tamil",
-    te:"telugu",
-    bn:"bengali",
-    kn:"kannada",
-    mr:"marathi",
-    ml:"malayalam",
-    gu:"gujarati",
-    pa:"punjabi",
-    ur:"urdu"
-  }
+  console.log(locale_meta)
 
-  const meta_localization = {
-    "hi":{
-      "definations":"परिभाषाएं",
-      "examples":"उदाहरण",
-      "synonyms":"समानार्थी शब्द",
-      "antonyms":"विलोम शब्द",
-      "heading":`सरल उदाहरणों और परिभाषाओं के साथ $$$ का वास्तविक अर्थ जानें।.`
-    },
-    "gu":{
-      "definations":"વ્યાખ્યાઓ",
-      "examples":"ઉદાહરણ",
-      "synonyms":"સમાનાર્થી શબ્દો",
-      "antonyms":"વિરોધી શબ્દો",
-      "heading":`સરળ ઉદાહરણો અને વ્યાખ્યાઓ સાથે $$$ નો વાસ્તવિક અર્થ જાણો.`
-    },
-    "ta":{
-      "definations":"வரையறைகள்",
-      "examples":"உதாரணங்கள்",
-      "synonyms":"இணைச்சொற்கள்",
-      "antonyms":"எதிர்ச்சொற்கள்",
-      "heading":`எளிய எடுத்துக்காட்டுகள் மற்றும் வரையறைகளுடன் $$$ இன் உண்மையான அர்த்தத்தை அறியவும்.`
-    },
-    "te":{
-      "definations":"నిర్వచనాలు",
-      "examples":"ఉదాహరణలు",
-      "synonyms":"పర్యాయపదాలు",
-      "antonyms":"వ్యతిరేక పదాలు",
-      "heading":`సాధారణ ఉదాహరణలు మరియు నిర్వచనాలతో $$$ యొక్క నిజమైన అర్థాన్ని తెలుసుకోండి.`
-    },
-    "bn":{
-      "definations":"সংজ্ঞা",
-      "examples":"উদাহরণ",
-      "synonyms":"সমার্থক শব্দ",
-      "antonyms":"বিপরীতার্থক শব্দ",
-      "heading":`সাধারণ উদাহরণ এবং সংজ্ঞা সহ $$$ এর আসল অর্থ জানুন।.`
-    },
-    "kn":{
-      "definations":"ವ್ಯಾಖ್ಯಾನಗಳು",
-      "examples":"ಉದಾಹರಣೆಗಳು",
-      "synonyms":"ಸಮಾನಾರ್ಥಕ ಪದಗಳು",
-      "antonyms":"ವಿರುದ್ಧಾರ್ಥಕ ಪದಗಳು",
-      "heading":`ಸರಳ ಉದಾಹರಣೆಗಳು ಮತ್ತು ವ್ಯಾಖ್ಯಾನಗಳೊಂದಿಗೆ $$$ ನ ನಿಜವಾದ ಅರ್ಥವನ್ನು ತಿಳಿಯಿರಿ.`
-    },
-    "mr":{
-      "definations":"व्याख्या",
-      "examples":"उदाहरणे",
-      "synonyms":"समानार्थी शब्द",
-      "antonyms":"विरुद्धार्थी शब्द",
-      "heading":`सोप्या उदाहरणे आणि व्याख्यांसह $$$ चा खरा अर्थ जाणून घ्या.`
-    },
-    "ml":{
-      "definations":"നിർവചനങ്ങൾ",
-      "examples":"ഉദാഹരണങ്ങൾ",
-      "synonyms":"പര്യായങ്ങൾ",
-      "antonyms":"വിപരീതപദങ്ങൾ",
-      "heading":`ലളിതമായ ഉദാഹരണങ്ങളും നിർവചനങ്ങളും ഉപയോഗിച്ച് $$$ എന്നതിന്റെ യഥാർത്ഥ അർത്ഥം മനസ്സിലാക്കുക.`
-    },
-    "pa":{
-      "definations":"ਪਰਿਭਾਸ਼ਾਵਾਂ",
-      "examples":"ਉਦਾਹਰਣਾਂ",
-      "synonyms":"ਸਮਾਨਾਰਥੀ ਸ਼ਬਦ",
-      "antonyms":"ਵਿਰੋਧੀ ਸ਼ਬਦ",
-      "heading":`ਸਧਾਰਨ ਉਦਾਹਰਣਾਂ ਅਤੇ ਪਰਿਭਾਸ਼ਾਵਾਂ ਦੇ ਨਾਲ $$$ ਦਾ ਅਸਲ ਅਰਥ ਜਾਣੋ।.`
-    },
-    "ur":{
-      "definations":"تعریفیں",
-      "examples":"مثالیں",
-      "synonyms":"مترادفات",
-      "antonyms":"متضاد الفاظ",
-      "heading":`سادہ مثالوں اور تعریفوں کے ساتھ $$$ کا حقیقی معنی جانیں۔`
-    },
-    
-  }
+  let t_word = locale_meta.name
 
-  const t_word = locale_to_lang[target_locale]
+  t_word = t_word.charAt(0).toUpperCase() + t_word.slice(1)
 
+  
 
   return (
     <div className="p-2 m-1">
 
-      <NextSeo
-      title="WordBook"
-      description={`The easy to understand dictionary with Example Sentences , Famous Quotes and Audio Pronunciations`}
-      canonical="https://uptoword.com/"
-      openGraph={{
-        url: 'https://uptoword.com/',
-        title: `${word.word} meaning and definition.`,
-        description:`Know the real meaning of ${word.word} with simple examples and definitions.` ,
-        images: [
-          {
-            url: `https://api.uptoword.com/generate_image?text=${word.word}&locale=${locale_to_lang[target_locale]}`,
-            width: 320,
-            height: 220,
-            alt: 'Home Image',
-            type: 'image/jpeg',
-          },
-        ],
-        site_name: 'uptoword',
-      }}
-      twitter={{
-        cardType: 'The easy to understand dictionary with Example Sentences , Famous Quotes and Audio Pronunciations',
-      }}
-    />
+     
       <div>
         <p className="text-lg md:text-3xl text-gray-600 mb-2 capitalize p-2 text-center dark:text-gray-400">
-          <h1><span className="font-bold">{word.word.charAt(0).toUpperCase() + word.word.slice(1)}</span> Meaning In <span className="font-bold">{locale_to_lang[target_locale]}</span></h1>
+          <h1><span className="font-bold">{word.word.charAt(0).toUpperCase() + word.word.slice(1)}</span> Meaning In <span className="font-bold">{t_word}</span></h1>
         </p>
       </div>
       <div>
@@ -150,7 +56,7 @@ const WordDetails = ({ data }) => {
       </div>
       
       <div className="">
-        <Player data={word}/>
+        <Player locale_meta={locale_meta} data={word}/>
       </div>
 
       {
@@ -162,7 +68,7 @@ const WordDetails = ({ data }) => {
 
       {
         word.definations.map((d,index) => (
-          <Defination key={index} d={d} index={index + 1}  />
+          <Defination key={index} d={d} index={index + 1} locale_meta={locale_meta}  />
         ))
       }
 

@@ -4,11 +4,9 @@ import Antonyms from "./antonyms";
 import Example from "./example";
 import Synonyms from "./synonyms";
 
-const Defination = ({ d, index }) => {
+const Defination = ({ d, index,locale_meta }) => {
 
-  const router = useRouter()
-
-  const target_locale = router.query.locale
+  const target_locale = locale_meta.code
 
   const meta_localization = {
     "hi":{
@@ -76,7 +74,6 @@ const Defination = ({ d, index }) => {
     // }
     
   }
-  console.log(d.examples)
 
   return (
     <div className="px-4 mt-4 py-2 border-y-2 border-gray-300 dark:border-gray-600">
@@ -98,7 +95,7 @@ const Defination = ({ d, index }) => {
           
             <div className="px-4 mt-2">
               {d.examples.map((e, e_index) => (
-                <Example key={e.example} example={e} e_index={e_index + 1} />
+                <Example key={e.example} example={e} e_index={e_index + 1} locale_meta={locale_meta} />
               ))}
             </div>
             </div>
@@ -110,7 +107,7 @@ const Defination = ({ d, index }) => {
             <h1 className="text-gray-400 text-sm dark:text-gray-600">Antonyms</h1>
             <div className="grid grid-cols-2 md:grid-cols-4 mt-2">
               {d.antonyms.map((a_en, index) => (
-                <Antonyms key={a_en.antonym} antonym={a_en} a_index={index} />
+                <Antonyms key={a_en.antonym} antonym={a_en} a_index={index} locale_meta={locale_meta} />
               ))}
             </div>
           </div>
@@ -123,7 +120,7 @@ const Defination = ({ d, index }) => {
             <h1 className="text-gray-400 text-sm dark:text-gray-600">Synonyms</h1>
             <div className="grid grid-cols-2 md:grid-cols-4 mt-2">
               {d.synonyms.map((s_en, index) => (
-                <Synonyms key={s_en.synonym} synonym={s_en} a_index={index} />
+                <Synonyms key={s_en.synonym} synonym={s_en} a_index={index} locale_meta={locale_meta} />
               ))}
             </div>
           </div>

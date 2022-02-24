@@ -3,11 +3,9 @@ import React from "react";
 import Antonyms from "./antonyms";
 import Synonyms from "./synonyms";
 
-const Example = ({ example, e_index }) => {
+const Example = ({ example, e_index,locale_meta }) => {
 
-  const router = useRouter()
-  const target_locale = router.query.locale
-
+  const target_locale = locale_meta.code
   return (
     
     <div className="text-sm bg-gray-50 dark:bg-gray-900 rounded-md p-2">

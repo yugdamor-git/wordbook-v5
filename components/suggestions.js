@@ -3,9 +3,10 @@ import { useRouter } from 'next/router';
 import React from 'react'
 import WordButton from './wordButton';
 
-const Suggestions = ({words}) => {
-    const router = useRouter()
-    const current_locale = router.query.locale
+const Suggestions = ({words,locale_meta}) => {
+
+    const current_locale = locale_meta.code
+    
     return <div className="shadow pb-4 rounded dark:bg-black">
     <div className="bg-primary-500 p-1 mt-4 text-white text-center rounded-t mb-1 font-semibold dark:text-slate-300 dark:bg-primary-500">
         <h1>Similar Words</h1>
@@ -14,7 +15,7 @@ const Suggestions = ({words}) => {
         {
             words.map(word => (
                 <div key={word._id}>
-                    <WordButton word={word.word} href={`/en/${current_locale}/${word.word.replaceAll(" ","-")}`}/>
+                    <WordButton word={word.word} href={`/en/${word.word.replaceAll(" ","-")}-meaning-in-${locale_meta.name}`}/>
                 </div>
                 
             ))

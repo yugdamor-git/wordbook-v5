@@ -3,12 +3,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
-const Antonyms = ({ antonym }) => {
-  const router = useRouter();
-  const target_locale = router.query.locale;
+const Antonyms = ({ antonym,locale_meta }) => {
+
+  const target_locale = locale_meta.code
+
   return (
     <div className="cursor-pointer">
-      <Link href={`/en/${target_locale}/${antonym.antonym}`}>
+      <Link href={`/en/${antonym.antonym.replaceAll(" ","-")}-meaning-in-${locale_meta.name}`}>
       <div className="text-xs bg-slate-50 rounded-md m-1 text-center text-gray-500 p-1 dark:bg-gray-900 hover:bg-slate-100">
         <div className="flex flex-col">
           <div className="text-gray-600 dark:text-gray-300">

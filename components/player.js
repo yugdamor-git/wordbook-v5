@@ -4,10 +4,11 @@ import React, { useState, useEffect } from "react";
 import useSound from "use-sound";
 import LocaleDropdown from "./localeDropdown";
 
-const Player = ({ data }) => {
+const Player = ({ data,locale_meta }) => {
   const [play] = useSound(data.audio_url);
-  const router = useRouter();
-  const target_locale = router.query.locale;
+
+  const target_locale = locale_meta.code
+
   return (
     <div className="">
       <div className="flex flex-col justify-around">
@@ -59,7 +60,7 @@ const Player = ({ data }) => {
       )}
 
       <div>
-        <LocaleDropdown />
+        <LocaleDropdown locale_meta={locale_meta} current_word={data.word} />
       </div>
     </div>
   );

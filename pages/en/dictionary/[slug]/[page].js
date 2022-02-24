@@ -1,3 +1,4 @@
+import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Browse from '../../../../components/browse'
@@ -10,82 +11,100 @@ import { connectToDatabase } from '../../../../lib/mongodb'
 const slugs = {
   "english-to-hindi":{
     source:"en",
-    target:"hi"
+    target:"hi",
+    name:"hindi",
+    meta_title:"हिन्दी शब्दकोश"
   },
   "english-to-tamil":{
     source:"en",
-    target:"ta"
+    target:"ta",
+    name:"tamil",
+    meta_title:"தமிழ் அகராதி"
   },
   "english-to-telugu":{
     source:"en",
-    target:"te"
+    target:"te",
+    name:"telugu",
+    meta_title:"తెలుగు నిఘంటువు"
   },
   "english-to-bengali":{
     source:"en",
-    target:"bn"
+    target:"bn",
+    name:"bengali",
+    meta_title:"বাংলা অভিধান"
   },
   "english-to-kannada":{
     source:"en",
-    target:"kn"
+    target:"kn",
+    name:"kannada",
+    meta_title:"ಕನ್ನಡ ನಿಘಂಟು"
   },
   "english-to-marathi":{
     source:"en",
-    target:"mr"
+    target:"mr",
+    name:"marathi",
+    meta_title:"मराठी शब्दकोश"
   },
   "english-to-malayalam":{
     source:"en",
-    target:"ml"
+    target:"ml",
+    name:"malayalam",
+    meta_title:"മലയാളം നിഘണ്ടു"
   },
   "english-to-gujarati":{
     source:"en",
-    target:"gu"
+    target:"gu",
+    name:"gujarati",
+    meta_title:"ગુજરાતી શબ્દકોશ"
   },
   "english-to-punjabi":{
     source:"en",
-    target:"pa"
+    target:"pa",
+    name:"punjabi",
+    meta_title:"ਪੰਜਾਬੀ ਕੋਸ਼"
   },
   "english-to-urdu":{
     source:"en",
-    target:"ur"
+    target:"ur",
+    name:"urdu",
+    meta_title:"اردو ڈکشنری"
   },
 
 }
 
 const DictionaryLangs = ({words,pagination,meta}) => {
   
+  const router = useRouter()
   let parsed_words = JSON.parse(words)
 
-
-  // const router = useRouter()
-
-  // const slug = router.query.slug
-
-  // const page_meta = slugs[slug]
-
-  // if (page_meta == null)
-  // {
-  //   router.push("/404")
-  // }
-
-  // const target_locale = page_meta.target
-
-  // const page = router.query.page
-
-  // let current_alphabet = router.query.startsWith
-
-  // if (current_alphabet == null)
-  // {
-  //     current_alphabet = 'a'
-  // }
   let source = "english"
-  let target = meta.locale
+  let target = meta.locale_code
   let current_alphabet = meta.alphabet
+
+  const seo = {
+    site_name:"UpToWord",
+    url :`https://uptoword.com${router.asPath}`,
+    title:`English To ${meta.locale_name_upper} - ${meta.locale_title}. Translate "${meta.locale_name_upper} Dictionary" to get ${meta.locale_title}`,
+    desc : `English to ${meta.locale_name_upper} dictionary to learn the meaning of words. ${meta.locale_name_upper} Dictionary to get definition, meaning, sentence examples of words.`
+  }
 
 
   return (
     <div>
+
+    <NextSeo
+      title={seo.title}
+      description={seo.desc}
+      openGraph={{
+        url: seo.url,
+        title: seo.title,
+        description:seo.desc,
+        site_name: seo.site_name,
+      }}
+    />
+
       <h1 className="text-xl font-bold text-center my-4 capitalize text-primary-500">{`${meta.slug.replaceAll("-"," ")} Dictionary`} </h1>
-      <p className="text-gray-500 p-2 text-sm text-center capitalize">Learn the meaning of thousands of words in Hindi with our English to {target} dictionary.<br></br>Not just the meaning, get definition, examples, antonyms, synonyms of words.</p>
+      <p className="text-gray-500 p-2 text-sm text-center capitalize">Learn the meaning of thousands of words in {meta.locale_name} with our English to {meta.locale_name} dictionary.<br></br>Not just the meaning, get definition, examples, antonyms, synonyms of words.</p>
       <NavbarSearch target_locale={target}/>
       <Browse />
       <div>
@@ -98,7 +117,7 @@ const DictionaryLangs = ({words,pagination,meta}) => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-gray-500 text-sm">
         {parsed_words.map((word) => (
           <div key={word._id}>
-            <WordButton word={word.word} href={`/en/${target}/${word.word.toString().replaceAll(" ","-")}`} />
+            <WordButton word={word.word} href={`/en/${word.word.toString().replaceAll(" ","-")}-meaning-in-${meta.locale_name}`} />
           </div>
         ))}
       </div>
@@ -180,9 +199,13 @@ export async function getServerSideProps(context) {
     page: current_page,
   };
 
+  const uppercase_locale = `${page_meta.name.charAt(0).toUpperCase()}${page_meta.name.slice(1)}`
   const meta = {
     alphabet : current_alphabet,
-    locale : target_locale,
+    locale_code : target_locale,
+    locale_name:page_meta.name,
+    locale_title:page_meta.meta_title,
+    locale_name_upper:uppercase_locale,
     slug : slug,
   }
 

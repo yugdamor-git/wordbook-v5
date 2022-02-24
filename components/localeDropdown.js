@@ -5,12 +5,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Popover } from '@headlessui/react'
 
-const LocaleDropdown = () => {
+const LocaleDropdown = ({locale_meta,current_word}) => {
   const router = useRouter();
 
-  const current_locale = router.query.locale;
-
-  const current_word = decodeURI(router.query.word);
+  const current_locale = locale_meta.code
 
   const locales = [
     {
@@ -79,17 +77,12 @@ const LocaleDropdown = () => {
         {locales.map(
         (locale) =>
           locale.default == false &&
-          <Link
-          href={`/en/${locale.code}/${current_word.replace(" ", "-")}`}
+
+          <Link key={locale.code}
+          href={`/en/${current_word.replace(" ", "-")}-meaning-in-${locale.name}`}
         >
           <Menu.Item as="div" className={`${locale.code == current_locale ? "bg-primary-50 text-primary-500 ":"bg-gray-50 "} transition ease-in-out delay-150 flex items-center mt-2 ml-2 rounded hover:bg-primary-500 hover:text-white dark:bg-slate-900 dark:hover:bg-slate-800`}>
-          <motion.div
-              initial={{ opacity: 0, scale: Math.random() }}
-              transition={{ duration: 0.3, delay: Math.random() }}
-              exit={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              key={locale.code}
+          <div
             >
              
                 <button className="">
@@ -99,7 +92,7 @@ const LocaleDropdown = () => {
                 </button>
            
               
-            </motion.div>
+            </div>
             </Menu.Item>
                </Link>
         )

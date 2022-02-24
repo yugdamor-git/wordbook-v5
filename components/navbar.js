@@ -11,10 +11,6 @@ let navbar_items = [
     href: "/",
   },
   {
-    name: "All Words",
-    href: "/en",
-  },
-  {
     name: "Top 200",
     href: "/top/200",
   },

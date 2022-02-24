@@ -3,10 +3,13 @@ import React from "react";
 
 const SearchResult = ({ word, href, onclickEvent }) => {
   return (
-      <div>
+      <div className="">
     <button onClick={onclickEvent}>
+    
     <Link href={href} passHref>
-    <div className="bg-gray-50 rounded mx-2 p-2 mt-2 flex">
+
+    
+    <div className="flex mx-2 my-2">
       
           <div className="cursor-pointer flex items-center mt-2 hover:bg-primary-50 hover:text-primary-500 hover:font-semibold dark:bg-slate-900 dark:hover:bg-slate-800">
             <div>
@@ -23,13 +26,14 @@ const SearchResult = ({ word, href, onclickEvent }) => {
               </svg>
             </div>
             <div>
-              <span className="capitalize px-1 dark:text-slate-400">
+              <span className="capitalize dark:text-slate-400">
                 {word}
               </span>
             </div>
           </div>
        
     </div>
+
     </Link>
       </button>
       </div>

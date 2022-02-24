@@ -74,6 +74,7 @@ const NavbarSearch = ({ meta_locale}) => {
           {
               results.length > 0 &&
               results.map(item => (
+                
                   <SearchResult onclickEvent={clearSearch}  key={item.id}
                   word={item.word + " : " + item.localization[current_locale].word}
                   href={`/en/${item.word.replaceAll(" ","-")}-meaning-in-${meta_locale.name}`}/>

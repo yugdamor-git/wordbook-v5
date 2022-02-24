@@ -3,6 +3,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
+function toTitleCase(text)
+{
+  let uppercase = `${text.charAt(0).toUpperCase()}${text.slice(1)}`
+  return uppercase
+}
+
 const Antonyms = ({ antonym,locale_meta }) => {
 
   const target_locale = locale_meta.code
@@ -16,7 +22,7 @@ const Antonyms = ({ antonym,locale_meta }) => {
             {antonym.localization[target_locale]}
           </div>
           <div className="text-gray-400 mt-1 dark:text-gray-500">
-            {antonym.antonym}
+            {toTitleCase(antonym.antonym)}
           </div>
         </div>
       </div>

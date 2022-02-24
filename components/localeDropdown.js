@@ -5,6 +5,12 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Popover } from '@headlessui/react'
 
+function toTitleCase(text)
+{
+  let uppercase = `${text.charAt(0).toUpperCase()}${text.slice(1)}`
+  return uppercase
+}
+
 const LocaleDropdown = ({locale_meta,current_word}) => {
   const router = useRouter();
 
@@ -87,7 +93,7 @@ const LocaleDropdown = ({locale_meta,current_word}) => {
              
                 <button className="">
                     <p className="dark:text-slate-400 text-sm capitalize p-2 text-center">
-                      {locale.name}
+                      {toTitleCase(locale.name)}
                     </p>
                 </button>
            

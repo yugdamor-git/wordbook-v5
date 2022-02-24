@@ -7,6 +7,13 @@ import Pagination from '../../../../components/pagination'
 import WordButton from '../../../../components/wordButton'
 import { connectToDatabase } from '../../../../lib/mongodb'
 
+function toTitleCase(text)
+{
+  let uppercase = `${text.charAt(0).toUpperCase()}${text.slice(1)}`
+  return uppercase
+}
+
+
 
 const slugs = {
   "english-to-hindi":{
@@ -89,7 +96,7 @@ const DictionaryLangsDefault = ({words,pagination,meta}) => {
   const seo = {
     site_name:"UpToWord",
     url :`https://uptoword.com${router.asPath}`,
-    title:`English To ${meta.locale_name_upper} Dictionary - ${meta.locale_title}`,
+    title:`English To ${meta.locale_name_upper} Dictionary - ${toTitleCase(meta.locale_title)}`,
     desc : `English to ${meta.locale_name_upper} dictionary to learn the meaning of words. ${meta.locale_name_upper} Dictionary to get definition, meaning, sentence examples of words.`
   }
 
@@ -123,7 +130,7 @@ const DictionaryLangsDefault = ({words,pagination,meta}) => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-gray-500 text-sm">
         {parsed_words.map((word) => (
           <div key={word._id}>
-            <WordButton word={word.word} href={`/en/${word.word.toString().replaceAll(" ","-")}-meaning-in-${meta.locale_name}`} />
+            <WordButton word={toTitleCase(word.word)} href={`/en/${word.word.toString().replaceAll(" ","-")}-meaning-in-${meta.locale_name}`} />
           </div>
         ))}
       </div>

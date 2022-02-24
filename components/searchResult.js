@@ -1,6 +1,14 @@
 import Link from "next/link";
 import React from "react";
 
+
+function toTitleCase(text)
+{
+  let uppercase = `${text.charAt(0).toUpperCase()}${text.slice(1)}`
+  return uppercase
+}
+
+
 const SearchResult = ({ word, href, onclickEvent }) => {
   return (
       <div className="">
@@ -27,7 +35,7 @@ const SearchResult = ({ word, href, onclickEvent }) => {
             </div>
             <div>
               <span className="capitalize dark:text-slate-400">
-                {word}
+                {toTitleCase(word)}
               </span>
             </div>
           </div>

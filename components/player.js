@@ -4,6 +4,13 @@ import React, { useState, useEffect } from "react";
 import useSound from "use-sound";
 import LocaleDropdown from "./localeDropdown";
 
+function toTitleCase(text)
+{
+  let uppercase = `${text.charAt(0).toUpperCase()}${text.slice(1)}`
+  return uppercase
+}
+
+
 const Player = ({ data,locale_meta }) => {
   const [play] = useSound(data.audio_url);
 
@@ -25,7 +32,7 @@ const Player = ({ data,locale_meta }) => {
       </div>
       <div className="flex items-center text-gray-400 dark:text-gray-600">
         <div>
-          <h1 className="capitalize text-xl font-bold">{data.word}</h1>
+          <h1 className="capitalize text-xl font-bold">{toTitleCase(data.word)}</h1>
         </div>
         <div className="pt-2 pl-1 text-sm">
           <h1>{data.part_of_speech}</h1>

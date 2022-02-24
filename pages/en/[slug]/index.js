@@ -6,6 +6,12 @@ import Suggestions from '../../../components/suggestions';
 import WordDetails from '../../../components/word';
 import { connectToDatabase } from '../../../lib/mongodb';
 
+function toTitleCase(text)
+{
+  let uppercase = `${text.charAt(0).toUpperCase()}${text.slice(1)}`
+  return uppercase
+}
+
 const locale_to_lang = {
   hi:"hindi",
   hindi:"hi",
@@ -142,13 +148,14 @@ const Word = ({data,suggestion_words}) => {
   const word = JSON.parse(data)
 
   const w_suggestions = JSON.parse(suggestion_words)
+
  
 
   const seo = {
     site_name:"UpToWord",
     url :`https://uptoword.com${router.asPath}`,
-    title:`${word[0].word} Meaning In ${locale_meta.name_upper} - ${word[0].localization[locale_meta.code].word} ${meta_localization[locale_meta.code].meta_title}`,
-    desc : `Meaning of ${word[0].word} in ${locale_meta.name_upper} language with definitions, examples, antonym, synonym. ${meta_localization[locale_meta.code].desc.replace("$$$",word[0].localization[locale_meta.code].word)}.`,
+    title:`${toTitleCase(word[0].word)} Meaning In ${locale_meta.name_upper} - ${word[0].localization[locale_meta.code].word} ${meta_localization[locale_meta.code].meta_title}`,
+    desc : `Meaning of ${toTitleCase(word[0].word)} in ${locale_meta.name_upper} language with definitions, examples, antonym, synonym. ${meta_localization[locale_meta.code].desc.replace("$$$",word[0].localization[locale_meta.code].word)}.`,
     locale: locale_meta.code,
   }
  
@@ -167,7 +174,7 @@ const Word = ({data,suggestion_words}) => {
             url: `https://api.uptoword.com/generate_image?text=${word[0].word}&locale=${locale_meta.name}`,
             width: 1200,
             height: 675,
-            alt: `${word[0].word} in a sentence`,
+            alt: `${toTitleCase(word[0].word)} in a sentence`,
           }
         ]
 

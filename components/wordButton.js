@@ -2,6 +2,12 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
 
+function toTitleCase(text)
+{
+  let uppercase = `${text.charAt(0).toUpperCase()}${text.slice(1)}`
+  return uppercase
+}
+
 const WordButton = ({word,href}) => {
   return <div>
          <Link href={href} passHref>
@@ -13,7 +19,7 @@ const WordButton = ({word,href}) => {
                             </svg>
                         </div>
                       <div>
-                        <span className="capitalize px-1 dark:text-slate-400">{word}</span>
+                        <span className="capitalize px-1 dark:text-slate-400">{toTitleCase(word)}</span>
                       </div>
                       
                   </div>

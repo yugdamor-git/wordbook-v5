@@ -5,7 +5,11 @@ import React from "react";
 import Defination from "./defination";
 import LocaleDropdown from "./localeDropdown";
 import Player from "./player";
-
+function toTitleCase(text)
+{
+  let uppercase = `${text.charAt(0).toUpperCase()}${text.slice(1)}`
+  return uppercase
+}
 
 
 const WordDetails = ({ data,locale_meta,locale_to_lang,meta_localization }) => {
@@ -41,7 +45,7 @@ const WordDetails = ({ data,locale_meta,locale_to_lang,meta_localization }) => {
       <div>
         <p className="text-gray-500 font-semibold text-center text-[16px]">
           <span>{meta_localization[target_locale].heading.split("$$$")[0]}</span>
-          <span className="text-primary-500 font-bold">{word.word}</span>
+          <span className="text-primary-500 font-bold">{toTitleCase(word.word)}</span>
           <span>{meta_localization[target_locale].heading.split("$$$")[1]}</span>
         </p>
       </div>
@@ -77,7 +81,7 @@ const WordDetails = ({ data,locale_meta,locale_to_lang,meta_localization }) => {
     
       }
       <div className="flex justify-center">
-        <img word={word.word} className="shadow-lg rounded h-auto border-none mt-5" src={`https://api.uptoword.com/generate_image?text=${word.word}&locale=${locale_to_lang[target_locale]}`} ></img>
+        <img className="shadow-lg rounded h-auto border-none mt-5" src={`https://api.uptoword.com/generate_image?text=${word.word}&locale=${locale_to_lang[target_locale]}`} ></img>
       </div>
       </div>
       

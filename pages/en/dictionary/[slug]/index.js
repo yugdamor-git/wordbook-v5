@@ -72,7 +72,7 @@ const slugs = {
 
 }
 
-const DictionaryLangs = ({words,pagination,meta}) => {
+const DictionaryLangsDefault = ({words,pagination,meta}) => {
   
   const router = useRouter()
   let parsed_words = JSON.parse(words)
@@ -221,4 +221,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default DictionaryLangs
+export default DictionaryLangsDefault

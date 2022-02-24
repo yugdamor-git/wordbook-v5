@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /top/*
+Disallow: /en/dictionary/english-to-*/*

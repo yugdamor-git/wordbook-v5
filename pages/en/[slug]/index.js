@@ -147,7 +147,7 @@ const Word = ({data,suggestion_words}) => {
   const seo = {
     site_name:"UpToWord",
     url :`https://uptoword.com${router.asPath}`,
-    title:`Trust Meaning In ${locale_meta.name_upper} - ${word[0].localization[locale_meta.code].word} ${meta_localization[locale_meta.code].meta_title}`,
+    title:`${word[0].word} Meaning In ${locale_meta.name_upper} - ${word[0].localization[locale_meta.code].word} ${meta_localization[locale_meta.code].meta_title}`,
     desc : `Meaning of ${word[0].word} in ${locale_meta.name_upper} language with definitions, examples, antonym, synonym. ${meta_localization[locale_meta.code].desc.replace("$$$",word[0].localization[locale_meta.code].word)}.`,
     locale: locale_meta.code,
   }
@@ -229,48 +229,6 @@ export async function getServerSideProps(context) {
     props: { data, suggestion_words }
   };
 }
-
-
-
-// export async function getStaticPaths() {
-
-//   const { db } = await connectToDatabase();
-
-//   const words = await db
-//       .collection(process.env.DATA_COLLECTION)
-//       .find({})
-//       .sort({views:-1,likes:-1})
-//       .project({ word: 1 })
-//       .limit(10)
-//       .toArray()
-
-//   const l = await db.collection("locales").find({}).toArray()
-
-//   let paths = []
-
-//   words.map(w =>{
-
-//     l.map(locale=>{
-//       if (locale["code"] != "en")
-//       {
-//         paths.push({
-//           params:{
-//             word:w.word,locale:locale["code"]
-//           }
-//         })
-//       }
-     
-//     })
-    
-//   }
-   
-//   )
-
-
-//   return { paths, fallback: "blocking" }
-
-
-// }
 
 
 

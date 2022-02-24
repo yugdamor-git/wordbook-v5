@@ -69,11 +69,7 @@ const Navbar = ({ darkMode , enableDark}) => {
               
             </div>
             </Link>
-            { searchbar_active &&
-                    <div className="hidden lg:block">
-                    <Search />
-                  </div>
-            }
+           
             
             
             <div className="hidden lg:block">

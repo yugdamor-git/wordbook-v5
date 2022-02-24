@@ -153,7 +153,7 @@ const Word = ({data,suggestion_words}) => {
 
       }}
       />
-    <NavbarSearch/>
+    <NavbarSearch meta_locale={locale_meta}/>
    <WordDetails locale_meta={locale_meta} data={word} meta_localization={meta_localization} locale_to_lang={locale_to_lang} ></WordDetails>
    <Suggestions locale_meta={locale_meta} words={w_suggestions}/>
   </div>;

@@ -81,6 +81,11 @@ const DictionaryLangs = ({words,pagination,meta}) => {
   let target = meta.locale_code
   let current_alphabet = meta.alphabet
 
+  const meta_locale = {
+    name:meta.locale_name,
+    code:meta.locale_code
+  }
+
   const seo = {
     site_name:"UpToWord",
     url :`https://uptoword.com${router.asPath}`,
@@ -105,7 +110,7 @@ const DictionaryLangs = ({words,pagination,meta}) => {
 
       <h1 className="text-xl font-bold text-center my-4 capitalize text-primary-500">{`${meta.slug.replaceAll("-"," ")} Dictionary`} </h1>
       <p className="text-gray-500 p-2 text-sm text-center capitalize">Learn the meaning of thousands of words in {meta.locale_name} with our English to {meta.locale_name} dictionary.<br></br>Not just the meaning, get definition, examples, antonyms, synonyms of words.</p>
-      <NavbarSearch target_locale={target}/>
+      <NavbarSearch meta_locale={meta_locale}/>
       <Browse />
       <div>
         <h1 className="text-center text-primary-500 text-lg font-semibold capitalize">

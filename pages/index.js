@@ -32,6 +32,10 @@ export default function Home({ locales,popular_words }) {
     desc : "Find word meaning from English to your language. Free online dictionary to find word meanings."
   }
 
+  const meta_locale = {
+    name:"hindi",
+    code:"hi"
+  }
 
   return (
     <div>
@@ -56,7 +60,7 @@ export default function Home({ locales,popular_words }) {
       <BreadCrumb breadcrum_items={breadcrum_items}/>
       <Hero/>
       <div className="my-4"></div>
-      <NavbarSearch/>
+      <NavbarSearch meta_locale={meta_locale}/>
       <div className="my-4"></div>
       <Locales languages={locales_parsed}/>
       <div className="my-4"></div>

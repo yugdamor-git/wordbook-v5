@@ -2,21 +2,11 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import SearchResult from "./searchResult";
 
-const NavbarSearch = ({ target_locale}) => {
+const NavbarSearch = ({ meta_locale}) => {
 
     const router = useRouter()
 
-    let current_locale = router.query.locale
-
-    if (current_locale == null)
-    {
-        current_locale = "hi"
-    }
-
-    if (target_locale != null)
-    {
-        current_locale = target_locale
-    }
+    let current_locale = meta_locale.code
 
     const [results,setResults] = useState([])
 
@@ -86,7 +76,7 @@ const NavbarSearch = ({ target_locale}) => {
               results.map(item => (
                   <SearchResult onclickEvent={clearSearch}  key={item.id}
                   word={item.word + " : " + item.localization[current_locale].word}
-                  href={`/en/${current_locale}/${item.word.replaceAll(" ","-")}`}/>
+                  href={`/en/${item.word.replaceAll(" ","-")}-meaning-in-${meta_locale.name}`}/>
               ))
           }
       </div>

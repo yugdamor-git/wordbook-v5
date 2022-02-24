@@ -38,6 +38,42 @@ const Pagination = ({current_page,max_page,pageType}) => {
         
     }
 
+    if(current_page > max_page - size)
+        {
+        
+            if (pageType == "alphabet")
+            {
+                pages.push({
+                    name:1,
+                    href:`/en/dictionary/${router.query.slug}/${1}?startsWith=${startsWith}`
+                })
+
+                pages.push({
+                    name:2,
+                    href:`/en/dictionary/${router.query.slug}/${2}?startsWith=${startsWith}`
+                })
+            }
+            else if (pageType == "locale")
+            {
+                pages.push({
+                    name:1,
+                    href:`/en/${router.query.locale}/page/${1}`
+                })
+
+                pages.push({
+                    name:2,
+                    href:`/en/${router.query.locale}/page/${2}`
+                })
+            }
+
+            pages.push({
+                name:"...",
+                href:router.asPath
+            })
+
+
+        }
+
     for(let i = current_page - size;i < current_page + size;i++)
     {
         if (i > 0 && i <= max_page)
@@ -57,15 +93,16 @@ const Pagination = ({current_page,max_page,pageType}) => {
                 })
             }
         }
-        
+         
     }
 
-    if (current_page < max_page -size)
+    if (current_page < max_page - size)
     {
             pages.push({
                 name:"...",
                 href:router.asPath
             })
+            
             for(let i = max_page - size;i < max_page + size;i++)
             {
 
@@ -89,6 +126,8 @@ const Pagination = ({current_page,max_page,pageType}) => {
                 
             }
     }
+    
+        
 
     if (current_page < max_page)
     {

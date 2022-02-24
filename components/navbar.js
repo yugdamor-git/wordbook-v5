@@ -36,7 +36,7 @@ const Navbar = ({ darkMode , enableDark}) => {
   }
 
   return (
-    <div className="shadow px-4 py-4 lg:py-2 sticky top-0 z-50 bg-white dark:bg-black dark:shadow dark:shadow-slate-900">
+    <div className="shadow px-4 py-4 lg:py-2 sticky top-0 z-50 bg-white dark:bg-black dark:shadow dark:shadow-slate-900 outline-none">
       <nav>
         <Menu>
           <div className="flex items-center justify-between">
@@ -150,7 +150,7 @@ const Navbar = ({ darkMode , enableDark}) => {
                 <Menu.Button>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 stroke-primary-500"
+                    className="h-6 w-6 stroke-primary-500 outline-none"
                     fill="none"
                     viewBox="0 0 24 24"
                   >

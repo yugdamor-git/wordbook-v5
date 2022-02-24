@@ -5,13 +5,14 @@ import React from "react";
 import Defination from "./defination";
 import LocaleDropdown from "./localeDropdown";
 import Player from "./player";
-function toTitleCase(text)
-{
-  let uppercase = `${text.charAt(0).toUpperCase()}${text.slice(1)}`
-  return uppercase
+
+function toTitleCase(str) {
+  str = str.toLowerCase().split(' ');
+  for (var i = 0; i < str.length; i++) {
+    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+  }
+  return str.join(' ');
 }
-
-
 const WordDetails = ({ data,locale_meta,locale_to_lang,meta_localization }) => {
   const router = useRouter();
 
@@ -39,7 +40,7 @@ const WordDetails = ({ data,locale_meta,locale_to_lang,meta_localization }) => {
      
       <div>
         <p className="text-lg md:text-3xl text-gray-600 mb-2 capitalize p-2 text-center dark:text-gray-400">
-          <h1><span className="font-bold">{word.word.charAt(0).toUpperCase() + word.word.slice(1)}</span> Meaning In <span className="font-bold">{t_word}</span></h1>
+          <h1><span className="font-bold">{toTitleCase(word.word)}</span> Meaning In <span className="font-bold">{t_word}</span></h1>
         </p>
       </div>
       <div>

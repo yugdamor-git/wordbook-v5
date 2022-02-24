@@ -4,12 +4,13 @@ import React, { useState, useEffect } from "react";
 import useSound from "use-sound";
 import LocaleDropdown from "./localeDropdown";
 
-function toTitleCase(text)
-{
-  let uppercase = `${text.charAt(0).toUpperCase()}${text.slice(1)}`
-  return uppercase
+function toTitleCase(str) {
+  str = str.toLowerCase().split(' ');
+  for (var i = 0; i < str.length; i++) {
+    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+  }
+  return str.join(' ');
 }
-
 
 const Player = ({ data,locale_meta }) => {
   const [play] = useSound(data.audio_url);

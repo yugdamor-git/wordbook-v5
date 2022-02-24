@@ -6,10 +6,12 @@ import Suggestions from '../../../components/suggestions';
 import WordDetails from '../../../components/word';
 import { connectToDatabase } from '../../../lib/mongodb';
 
-function toTitleCase(text)
-{
-  let uppercase = `${text.charAt(0).toUpperCase()}${text.slice(1)}`
-  return uppercase
+function toTitleCase(str) {
+  str = str.toLowerCase().split(' ');
+  for (var i = 0; i < str.length; i++) {
+    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+  }
+  return str.join(' ');
 }
 
 const locale_to_lang = {

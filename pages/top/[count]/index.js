@@ -30,10 +30,6 @@ const TopWords = ({ top_words }) => {
           </div>
         ))}
       </div>
-      {/* <Pagination
-        current_page={+pagination.page}
-        max_page={pagination.pageCount}
-      /> */}
     </div>
   );
 };

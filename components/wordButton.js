@@ -12,6 +12,7 @@ function toTitleCase(str) {
 const WordButton = ({word,href}) => {
   return <div>
          <Link href={href} prefetch={false} passHref>
+                  <a>
                   <div className="cursor-pointer flex items-center mt-2 bg-gray-50 rounded mx-2 p-2 hover:bg-primary-50 hover:text-primary-500 hover:font-semibold dark:bg-slate-900 dark:hover:bg-slate-800">
                     
                         <div>
@@ -24,6 +25,7 @@ const WordButton = ({word,href}) => {
                       </div>
                       
                   </div>
+                  </a>
                   </Link>
   </div>
 

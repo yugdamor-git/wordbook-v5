@@ -81,14 +81,11 @@ const WordDetails = ({ data,locale_meta,locale_to_lang,meta_localization }) => {
  
     
       }
-      <div>
-        <p className="m-1 text-gray-600">
-        <span className="text-primary-500 font-semibold">{toTitleCase(word.word)}</span> meaning in <span className="text-primary-500 font-semibold">{locale_meta.name}</span> - Learn actual meaning of <span className="text-primary-500 font-semibold">{toTitleCase(word.word)}</span> with simple examples & definitions. Also you will learn Antonyms , synonyms & best example sentences. This dictionary also provide you 10 languages so you can find meaning of <span className="text-primary-500 font-semibold">{toTitleCase(word.word)}</span> in Hindi, Tamil , Telugu , Bengali , Kannada , Marathi , Malayalam , Gujrati , Punjabi , Urdu.
-        </p>
-      </div>
+      
       <div className="flex justify-center">
         <img className="shadow-lg rounded h-auto border-none mt-5 w-80 md:w-2/3" src={`https://api.uptoword.com/generate_image?text=${word.word}&locale=${locale_to_lang[target_locale]}`} ></img>
       </div>
+      
       </div>
       
   );

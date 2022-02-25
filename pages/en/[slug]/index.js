@@ -185,6 +185,13 @@ const Word = ({data,suggestion_words}) => {
     <NavbarSearch meta_locale={locale_meta}/>
    <WordDetails locale_meta={locale_meta} data={word} meta_localization={meta_localization} locale_to_lang={locale_to_lang} ></WordDetails>
    <Suggestions locale_meta={locale_meta} words={w_suggestions}/>
+
+   <div>
+        <p className="m-1 mt-4 text-gray-600">
+        <span className="text-primary-500 font-semibold">{toTitleCase(word[0].word)}</span> meaning in <span className="text-primary-500 font-semibold">{toTitleCase(locale_meta.name)}</span> - Learn actual meaning of <span className="text-primary-500 font-semibold">{toTitleCase(word[0].word)}</span> with simple examples & definitions. Also you will learn Antonyms , synonyms & best example sentences. This dictionary also provide you 10 languages so you can find meaning of <span className="text-primary-500 font-semibold">{toTitleCase(word[0].word)}</span> in Hindi, Tamil , Telugu , Bengali , Kannada , Marathi , Malayalam , Gujrati , Punjabi , Urdu.
+        </p>
+      </div>
+
   </div>;
 };
 

@@ -15,7 +15,7 @@ const SearchResult = ({ word, href, onclickEvent }) => {
       <div className="">
     <button onClick={onclickEvent}>
     
-    <Link href={href} passHref>
+    <Link href={href} prefetch={false} passHref>
 
     
     <div className="flex mx-2 my-2">

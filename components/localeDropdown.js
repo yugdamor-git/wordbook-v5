@@ -1,9 +1,8 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Menu } from "@headlessui/react";
-import { motion } from "framer-motion";
+
 import Link from "next/link";
-import { Popover } from '@headlessui/react'
 
 function toTitleCase(text)
 {
@@ -13,8 +12,6 @@ function toTitleCase(text)
 
 const LocaleDropdown = ({locale_meta,current_word}) => {
   const router = useRouter();
-
-  const [menuOpen,setMenuOpen] = useState(true);
 
   const current_locale = locale_meta.code
 

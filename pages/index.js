@@ -88,7 +88,7 @@ export async function getStaticProps() {
 
 
   return {
-    props: {locales,popular_words},revalidate: 10,
+    props: {locales,popular_words},revalidate: 300,
   }
 }
 

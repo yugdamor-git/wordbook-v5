@@ -18,8 +18,9 @@ const Custom404 = () => {
                 <div className="text-gray-500 m-2 text-center capitalize">Please check the url in address bar and try again</div>
                 <div className="flex justify-center">
                 <div className="text-center mx-1 my-1">
-                    <Link href="/">
-                    <button className="bg-primary-500 p-2 rounded text-white hover:bg-primary-600">Home</button>
+                    <Link href="/" passHref>
+
+                    <a className="bg-primary-500 p-2 rounded text-white hover:bg-primary-600 cursor">Home</a>
                     </Link>
                 </div>
 

@@ -40,7 +40,8 @@ const Navbar = ({ darkMode , enableDark}) => {
       <nav>
         <Menu>
           <div className="flex items-center justify-between">
-          <Link href="/">
+          <Link href="/" passHref>
+            <a>
             <div className="flex justify-items-center cursor-pointer">
               <div>
                 <svg
@@ -64,6 +65,7 @@ const Navbar = ({ darkMode , enableDark}) => {
            
               
             </div>
+            </a>
             </Link>
            
             
@@ -103,6 +105,7 @@ const Navbar = ({ darkMode , enableDark}) => {
               </div>
                 {navbar_items.map((item) => (
                   <Link key={item.name} href={item.href} passHref>
+                    <a>
                     <div
                       className={`${
                         current_route.split("/")[1] == item.href.split("/")[1]
@@ -112,6 +115,7 @@ const Navbar = ({ darkMode , enableDark}) => {
                     >
                       {item.name}
                     </div>
+                    </a>
                   </Link>
                 ))}
                
@@ -178,7 +182,8 @@ const Navbar = ({ darkMode , enableDark}) => {
               <div className="py-1 grid grid-cols-1 bg-white text-sm text-center pt-5 text-gray-500 dark:bg-black">
                 {navbar_items.map((item) => (
                    <Link href={item.href} key={item.name} prefetch={false} passHref>
-                  <Menu.Item as="button" className={`${
+                     
+                  <Menu.Item as="a" className={`${
                     current_route.split("/")[1] == item.href.split("/")[1]
                       ? "bg-primary-500 text-white"
                       : "bg-gray-50 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800"
@@ -190,6 +195,7 @@ const Navbar = ({ darkMode , enableDark}) => {
                         
                    
                   </Menu.Item>
+                  
                   </Link>
                 ))}
 

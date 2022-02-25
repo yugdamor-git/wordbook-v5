@@ -85,7 +85,7 @@ const LocaleDropdown = ({locale_meta,current_word}) => {
           <>
           
           <Menu.Button className="bg-primary-500 rounded p-2 text-white text-xs">Change Language</Menu.Button>
-        <Menu.Items static className={`grid grid-cols-3 md:grid-cols-6 lg:grid-cols-10 space-x-2 space-y-2 ${open == true ? "block" : "hidden"}`}>
+        <Menu.Items static className={`grid grid-cols-3 md:grid-cols-6 lg:grid-cols-10 ${open == true ? "block" : "hidden"}`}>
         {locales.map(
         (locale) =>
           locale.default == false &&

@@ -17,7 +17,8 @@ const Antonyms = ({ antonym,locale_meta }) => {
 
   return (
     <div className="cursor-pointer">
-      <Link href={`/en/${antonym.antonym.replaceAll(" ","-")}-meaning-in-${locale_meta.name}`}>
+      <Link passHref href={`/en/${antonym.antonym.replaceAll(" ","-")}-meaning-in-${locale_meta.name}`}>
+        <a>
       <div className="text-xs bg-slate-50 rounded-md m-1 text-center text-gray-500 p-1 dark:bg-gray-900 hover:bg-slate-100">
         <div className="flex flex-col">
           <div className="text-gray-600 dark:text-gray-300">
@@ -28,6 +29,7 @@ const Antonyms = ({ antonym,locale_meta }) => {
           </div>
         </div>
       </div>
+      </a>
       </Link>
     </div>
   );

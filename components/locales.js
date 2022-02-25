@@ -14,7 +14,7 @@ const Locales = ({ languages }) => {
       <div className="grid grid-cols-2 md:grid-cols-3 text-gray-500">
         {
             languages.map(lang=>(
-                
+                lang.default == false &&
 
                 
                                 <Link passHref key={lang.code} prefetch={false} href={`/en/dictionary/english-to-${lang.name}`}>

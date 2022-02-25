@@ -7,8 +7,8 @@ const Synonyms = ({synonym,locale_meta}) => {
   const target_locale = locale_meta.code
 
   return <div className="cursor-pointer">
-    <Link href={`/en/${synonym.synonym.replaceAll(" ","-")}-meaning-in-${locale_meta.name}`}>
-    
+    <Link passHref href={`/en/${synonym.synonym.replaceAll(" ","-")}-meaning-in-${locale_meta.name}`}>
+    <a>
     <div className="text-sm bg-slate-50 rounded-md m-1 text-center text-gray-500 p-1 dark:bg-gray-900 hover:bg-slate-100">
                       
                       <div className='flex flex-col'>
@@ -16,6 +16,7 @@ const Synonyms = ({synonym,locale_meta}) => {
                       </div>
                       
                   </div>
+                  </a>
                   </Link>
   </div>;
 };

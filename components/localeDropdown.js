@@ -88,6 +88,7 @@ const LocaleDropdown = ({locale_meta,current_word}) => {
           locale.default == false &&
           <Link key={locale.code}
           passHref
+          prefetch={false}
           href={`/en/${current_word.replace(" ", "-")}-meaning-in-${locale.name}`}
         >
           <a>

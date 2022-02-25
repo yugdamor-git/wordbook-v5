@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 import { Menu } from "@headlessui/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -13,6 +13,8 @@ function toTitleCase(text)
 
 const LocaleDropdown = ({locale_meta,current_word}) => {
   const router = useRouter();
+
+  const [menuOpen,setMenuOpen] = useState(true);
 
   const current_locale = locale_meta.code
 
@@ -78,33 +80,49 @@ const LocaleDropdown = ({locale_meta,current_word}) => {
 
     <div>
       <Menu>
-        <Menu.Button className="bg-primary-500 rounded p-2 text-white text-xs">Change Language</Menu.Button>
-        <Menu.Items className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-10 space-x-2 space-y-2">
+        {({ open }) => (
+
+          <>
+          
+          <Menu.Button className="bg-primary-500 rounded p-2 text-white text-xs">Change Language</Menu.Button>
+        <Menu.Items static className={`grid grid-cols-3 md:grid-cols-6 lg:grid-cols-10 space-x-2 space-y-2 ${open == true ? "block" : "hidden"}`}>
         {locales.map(
         (locale) =>
           locale.default == false &&
-
           <Link key={locale.code}
+          passHref
           href={`/en/${current_word.replace(" ", "-")}-meaning-in-${locale.name}`}
         >
-          <Menu.Item as="div" className={`${locale.code == current_locale ? "bg-primary-50 text-primary-500 ":"bg-gray-50 "} transition ease-in-out delay-150 flex items-center mt-2 ml-2 rounded hover:bg-primary-500 hover:text-white dark:bg-slate-900 dark:hover:bg-slate-800`}>
+          <a>
+            
+          <Menu.Item as="div" className={`${locale.code == current_locale ? "bg-primary-50 cursor text-primary-500 ":"bg-gray-50 "} transition ease-in-out delay-150 flex items-center mt-4 ml-2 rounded hover:bg-primary-500 hover:text-white dark:bg-slate-900 dark:hover:bg-slate-800`}>
           <div
             >
              
-                <button className="">
+               
                     <p className="dark:text-slate-400 text-sm capitalize p-2 text-center">
                       {toTitleCase(locale.name)}
                     </p>
-                </button>
            
               
             </div>
             </Menu.Item>
+            </a>
                </Link>
         )
         }
 
         </Menu.Items>
+          
+          </>
+
+
+        )
+
+        }
+
+
+        
       </Menu>
     </div>
     // <Menu className="relative">

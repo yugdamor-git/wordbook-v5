@@ -188,7 +188,7 @@ const Word = ({data,suggestion_words}) => {
 
    <div>
         <p className="m-1 mt-4 text-gray-600">
-        <span className="text-primary-500 font-semibold">{toTitleCase(word[0].word)}</span> meaning in <span className="text-primary-500 font-semibold">{toTitleCase(locale_meta.name)}</span> - Learn actual meaning of <span className="text-primary-500 font-semibold">{toTitleCase(word[0].word)}</span> with simple examples & definitions. Also you will learn Antonyms , synonyms & best example sentences. This dictionary also provide you 10 languages so you can find meaning of <span className="text-primary-500 font-semibold">{toTitleCase(word[0].word)}</span> in Hindi, Tamil , Telugu , Bengali , Kannada , Marathi , Malayalam , Gujrati , Punjabi , Urdu.
+        <span className="text-primary-500 font-semibold">{toTitleCase(word[0].word)}</span> meaning in <span className="text-primary-500 font-semibold">{toTitleCase(locale_meta.name)}</span> - Learn actual meaning of <span className="text-primary-500 font-semibold">{toTitleCase(word[0].word)}</span> with simple examples & definitions. Also you will learn Antonyms , synonyms & best example sentences. This dictionary also provide you 10 languages so you can find meaning of <span className="text-primary-500 font-semibold">{toTitleCase(word[0].word)}</span> in Hindi, Tamil , Telugu , Bengali , Kannada , Marathi , Malayalam , Gujarati , Punjabi , Urdu.
         </p>
       </div>
 

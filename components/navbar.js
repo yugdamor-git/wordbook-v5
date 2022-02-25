@@ -177,7 +177,7 @@ const Navbar = ({ darkMode , enableDark}) => {
             <Menu.Items>
               <div className="py-1 grid grid-cols-1 bg-white text-sm text-center pt-5 text-gray-500 dark:bg-black">
                 {navbar_items.map((item) => (
-                   <Link href={item.href} key={item.name} passHref>
+                   <Link href={item.href} key={item.name} prefetch={false} passHref>
                   <Menu.Item as="button" className={`${
                     current_route.split("/")[1] == item.href.split("/")[1]
                       ? "bg-primary-500 text-white"

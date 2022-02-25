@@ -17,10 +17,12 @@ const Locales = ({ languages }) => {
                 
 
                 
-                                <Link key={lang.code} prefetch={false} href={`/en/dictionary/english-to-${lang.name}`}>
+                                <Link passHref key={lang.code} prefetch={false} href={`/en/dictionary/english-to-${lang.name}`}>
+                                  <a>
                 <div className={`${lang.default ? "hidden" : ""} bg-gray-50 m-4 p-4 rounded-xl text-center hover:text-primary-500 hover:bg-primary-50 hover:font-semibold shadow cursor-pointer dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800`}>
                     <span>English To <span className="text-indigo-500 capitalize">{toTitleCase(lang.name)}</span></span>
                 </div>
+                </a>
                 </Link>
                 
             ))

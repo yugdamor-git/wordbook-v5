@@ -51,12 +51,14 @@ const Browse = () => {
       <div className="grid grid-cols-6 md:grid-cols-10 lg:grid-cols-12 text-gray-500 p-2">
         {alphabets.map((alphabet) => (
           <div key={alphabet}>
-            <Link prefetch={false} href={`/en/dictionary/${slug}/1?startsWith=${alphabet.toLowerCase()}`}>
+            <Link passHref prefetch={false} href={`/en/dictionary/${slug}/1?startsWith=${alphabet.toLowerCase()}`}>
+              <a>
               <button
                 className={`${ alphabet.toLowerCase() == current_alphabet ? "text-white bg-primary-500 ": "dark:bg-gray-900 dark:text-slate-500 "}h-10 w-10 shadow hover:bg-primary-500 rounded hover:text-white m-1 dark:hover:bg-primary-500 dark:hover:text-white`}
               >
                 {alphabet}
               </button>
+              </a>
             </Link>
           </div>
         ))}

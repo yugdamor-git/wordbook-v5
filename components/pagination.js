@@ -159,11 +159,13 @@ const Pagination = ({current_page,max_page,pageType}) => {
                   
                     <button key={item.name}>
                     <Link prefetch={false} href={item.href} passHref>
+                        <a>
                         <div key={item.name} className={`h-8 w-10 text-xs m-1 text-center p-2 ${current_page==item.name ? "bg-primary-500 " : "bg-gray-100 hover:bg-primary-50 dark:bg-slate-900 dark:text-slate-500 dark:hover:bg-slate-800 "}rounded`}>
                             
                                 <a  className={`${current_page == item.name ? "text-white " :""}`}>{item.name}</a>
                             
                         </div>
+                        </a>
                         </Link>
                         </button>
                   

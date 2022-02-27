@@ -52,7 +52,7 @@ export default function Home({ locales,popular_words }) {
     />
       <main>
         
-//       <BreadCrumb breadcrum_items={breadcrum_items}/>
+
       <Hero/>
       <div className="my-4"></div>
       <NavbarSearch meta_locale={meta_locale}/>

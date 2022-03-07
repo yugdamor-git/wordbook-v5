@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import React from "react";
 import Antonyms from "./antonyms";
 import Synonyms from "./synonyms";
-import Highlighter from "react-highlight-words";
 
 function toTitleCase(str) {
   str = str.toLowerCase().split(' ');

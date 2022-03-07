@@ -19,6 +19,10 @@ function highlighter(sentence,word)
   {
     return <><span>{s[0]}</span><span className="text-primary-500">{word}</span><span>{s[1]}</span></>
   }
+  else if (s.length == 3)
+  {
+    return <><span>{s[0]}</span><span className="text-primary-500">{word}</span><span>{s[1]}</span><span className="text-primary-500">{word}</span><span>{s[2]}</span></>
+  }
   else{
     return <span>{sentence}</span>
   }

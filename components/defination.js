@@ -4,7 +4,7 @@ import Antonyms from "./antonyms";
 import Example from "./example";
 import Synonyms from "./synonyms";
 
-const Defination = ({ d, index,locale_meta }) => {
+const Defination = ({ d, index,locale_meta,word }) => {
 
   const target_locale = locale_meta.code
 
@@ -95,7 +95,7 @@ const Defination = ({ d, index,locale_meta }) => {
           
             <div className="px-4 mt-2">
               {d.examples.map((e, e_index) => (
-                <Example key={e.example} example={e} e_index={e_index + 1} locale_meta={locale_meta} />
+                <Example key={e.example} example={e} e_index={e_index + 1} locale_meta={locale_meta} word={word} />
               ))}
             </div>
             </div>

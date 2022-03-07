@@ -73,7 +73,7 @@ const WordDetails = ({ data,locale_meta,locale_to_lang,meta_localization }) => {
 
       {
         word.definations.map((d,index) => (
-          <Defination key={index} d={d} index={index + 1} locale_meta={locale_meta}  />
+          <Defination key={index} d={d} index={index + 1} locale_meta={locale_meta} word={word}  />
         ))
       }
 

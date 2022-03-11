@@ -65,6 +65,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default Word
-
 export default TopWords;

@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 class Database:
     def __init__(self):
         db_name = "wordbook"
-        connection_uri = "mongodb://root:9076b974c31e4678f@65.108.81.208:27017/?authSource=admin"
+        connection_uri = "mongodb://root:9076b974c31e4678f@127.0.0.1:27017/?authSource=admin"
         client = pymongo.MongoClient(connection_uri)
         db = client[db_name]
         self.data = db["data"]
